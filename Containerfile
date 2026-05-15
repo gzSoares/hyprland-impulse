@@ -33,8 +33,6 @@ RUN mkdir -vp /var/roothome /data /var/home && \
 # Instalação do Hyprland
 RUN dnf5 install dnf5-plugins -y && \
     dnf5 copr enable errornointernet/quickshell -y && \
-    dnf5 copr enable wef/cliphist -y && \
-    dnf5 copr enable heus-sueh/packages -y && \
     dnf5 copr enable atim/starship -y && \
     dnf5 copr enable alternateved/eza -y && \
     dnf5 install hyprland quickshell-git --setopt=install_weak_deps=False -y && \
