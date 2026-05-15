@@ -28,7 +28,7 @@ RUN mkdir -vp /var/roothome /data /var/home && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Habilitar repositórios COPR necessários
+# Habilitar repositórios COPR
 RUN dnf5 install -y dnf5-plugins && \
     dnf5 copr enable -y solopasha/hyprland && \
     dnf5 copr enable -y errornointernet/quickshell && \
@@ -37,7 +37,13 @@ RUN dnf5 install -y dnf5-plugins && \
     dnf5 copr enable -y alternateved/eza && \
     dnf5 clean all
 
-# Instalar dependências do Hyprland primeiro (aquamarine traz libdisplay-info)
+# libdisplay-info do repo oficial ANTES do aquamarine do COPR
+# (o aquamarine do COPR solopasha foi compilado contra .so.2,
+#  que corresponde à versão 0.3.x do Fedora 44 oficial)
+RUN dnf5 install -y libdisplay-info && \
+    dnf5 clean all
+
+# Instalar dependências do ecossistema Hypr do COPR
 RUN dnf5 install -y \
     aquamarine \
     hyprcursor \
@@ -48,7 +54,7 @@ RUN dnf5 install -y \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Instalar Hyprland e ecossistema
+# Instalar Hyprland e utilitários
 RUN dnf5 install -y \
     hyprland \
     hyprlock \
@@ -76,19 +82,19 @@ RUN dnf5 install -y \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Instalar pacotes do sistema (pacotes_necessarios)
+# Instalar pacotes de sistema
 RUN grep -v '^#' pacotes_necessarios | grep -v '^$' | \
     xargs dnf5 install -y && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Instalar pacotes do desktop (pacotes_desktop)
+# Instalar pacotes de desktop
 RUN grep -v '^#' pacotes_desktop | grep -v '^$' | \
     xargs dnf5 install -y && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Clonar dotfiles do Illogical Impulse e instalar no skel
+# Clonar dotfiles do Illogical Impulse para o /etc/skel/
 RUN dnf5 install -y git rsync && \
     git clone --filter=blob:none --recurse-submodules \
         https://github.com/end-4/dots-hyprland /tmp/dots-hyprland && \
@@ -103,7 +109,7 @@ RUN systemctl enable NetworkManager && \
     systemctl mask systemd-remount-fs.service && \
     rm -rfv /var/roothome/.*
 
-# Verificação final da imagem
+# Verificação final
 RUN bootc container lint
 
 # Estágio de otimização com Chunkah
