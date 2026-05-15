@@ -10,7 +10,6 @@ distrobox
 git
 tree
 zram-generator
-spice-vdagent
 podman
 fpaste
 auditctl
