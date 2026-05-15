@@ -29,38 +29,20 @@ RUN mkdir -vp /var/roothome /data /var/home && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Habilitar repositórios COPR
+# ashbuk/Hyprland-Fedora: build limpo sem conflito de ABI (sem depender de libs externas)
 RUN dnf5 install -y dnf5-plugins && \
-    dnf5 copr enable -y solopasha/hyprland && \
+    dnf5 copr enable -y ashbuk/Hyprland-Fedora && \
     dnf5 copr enable -y errornointernet/quickshell && \
     dnf5 copr enable -y heus-sueh/packages && \
     dnf5 copr enable -y atim/starship && \
     dnf5 copr enable -y alternateved/eza && \
     dnf5 clean all
 
-# libdisplay-info do repo oficial ANTES do aquamarine do COPR
-# (o aquamarine do COPR solopasha foi compilado contra .so.2,
-#  que corresponde à versão 0.3.x do Fedora 44 oficial)
-RUN dnf5 install -y libdisplay-info && \
-    dnf5 clean all
-
-# Instalar dependências do ecossistema Hypr do COPR
-RUN dnf5 install -y \
-    aquamarine \
-    hyprcursor \
-    hyprgraphics \
-    hyprlang \
-    hyprutils \
-    hyprwayland-scanner && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Instalar Hyprland e utilitários
+# Instalar Hyprland e utilitários (ashbuk empacota tudo junto sem conflito)
 RUN dnf5 install -y \
     hyprland \
     hyprlock \
     hypridle \
-    hyprpicker \
-    hyprsunset \
     xdg-desktop-portal-hyprland \
     xdg-desktop-portal-gtk \
     xdg-desktop-portal && \
@@ -94,7 +76,7 @@ RUN grep -v '^#' pacotes_desktop | grep -v '^$' | \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Clonar dotfiles do Illogical Impulse para o /etc/skel/
+# Clonar dotfiles do Illogical Impulse para /etc/skel/
 RUN dnf5 install -y git rsync && \
     git clone --filter=blob:none --recurse-submodules \
         https://github.com/end-4/dots-hyprland /tmp/dots-hyprland && \
