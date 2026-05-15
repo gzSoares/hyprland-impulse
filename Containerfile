@@ -37,7 +37,102 @@ RUN dnf5 install dnf5-plugins -y && \
     dnf5 copr enable deltacopy/darkly -y && \
     dnf5 copr enable alternateved/eza -y && \
     dnf5 copr enable atim/starship -y && \
-    dnf5 install hyprland --setopt=install_weak_deps=False -y && \
+    dnf5 install --setopt=install_weak_deps=False -y \
+        hyprland \
+        cava \
+        pavucontrol \
+        wireplumber \
+        libdbusmenu-gtk3-devel \
+        playerctl \
+        geoclue2 \
+        brightnessctl \
+        ddcutil \
+        bc \
+        coreutils \
+        cliphist \
+        cmake \
+        curl \
+        wget2 \
+        ripgrep \
+        jq \
+        xdg-utils \
+        rsync \
+        yq \
+        bibata-cursor-theme \
+        adw-gtk3-theme \
+        breeze-cursor-theme \
+        grub2-breeze-theme \
+        breeze-icon-theme \
+        breeze-icon-theme-fedora \
+        kf6-breeze-icons \
+        sddm-breeze \
+        breeze-plus-icon-theme \
+        darkly \
+        eza \
+        fish \
+        fontconfig \
+        kitty \
+        florian-karsten-space-grotesk-fonts \
+        starship \
+        jetbrains-mono-nerd-fonts \
+        google-material-symbols-vf-rounded-fonts \
+        material-icons-fonts \
+        readex-pro-fonts-all \
+        google-rubik-vf-fonts \
+        twitter-twemoji-fonts \
+        google-sans-flex-vf-fonts \
+        hyprland-guiutils \
+        hyprland-qt-support \
+        hyprsunset \
+        wl-clipboard \
+        bluedevil \
+        gnome-keyring \
+        NetworkManager \
+        plasma-nm \
+        polkit-kde \
+        dolphin \
+        plasma-systemsettings \
+        microtex \
+        xdg-desktop-portal \
+        xdg-desktop-portal-gtk \
+        xdg-desktop-portal-kde \
+        xdg-desktop-portal-hyprland \
+        clang \
+        uv \
+        gtk4-devel \
+        libadwaita-devel \
+        libsoup3-devel \
+        libportal-gtk4 \
+        gobject-introspection-devel \
+        python3 \
+        python3.12 \
+        python3-devel \
+        python3.12-devel \
+        quickshell-git \
+        matugen \
+        hyprshot \
+        slurp \
+        swappy \
+        tesseract \
+        tesseract-langpack-eng \
+        tesseract-langpack-chi_sim \
+        wf-recorder \
+        upower \
+        wtype \
+        ydotool \
+        fuzzel \
+        glib2 \
+        ImageMagick \
+        hypridle \
+        hyprlock \
+        hyprpicker \
+        songrec \
+        translate-shell \
+        qalculate \
+        wlogout \
+        mpvpaper \
+        plasma-systemmonitor \
+        unzip && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/*
 
