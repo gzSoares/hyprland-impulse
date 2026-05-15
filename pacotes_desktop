@@ -7,18 +7,8 @@ adw-gtk3-theme
 libnma
 ibus-typing-booster
 ibus-gtk4
-gnome-shell-extension-appindicator
 nautilus
 ptyxis
 gnome-backgrounds
 f44-backgrounds-gnome
-
-# Plymounth Firula torna o boot agradável
-plymouth
-plymouth-core-libs
-plymouth-graphics-libs
-plymouth-plugin-label
-plymouth-plugin-two-step
-plymouth-scripts
-plymouth-system-theme
-plymouth-theme-spinner
+thermald
