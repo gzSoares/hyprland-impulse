@@ -30,20 +30,23 @@ RUN mkdir -vp /var/roothome /data /var/home && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/*
 
-# Instalação do Hyprland
-RUN dnf5 install dnf5-plugins -y && \
-    dnf5 copr enable errornointernet/quickshell -y && \
-    dnf5 copr enable atim/starship -y && \
-    dnf5 copr enable alternateved/eza -y && \
-    dnf5 install hyprland quickshell-git --setopt=install_weak_deps=False -y && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/*
+# Step 1: instalar dnf5-plugins
+RUN dnf5 install dnf5-plugins -y
 
-# Instalaçã do Impulse:
-RUN git clone --filter=blob:none --recurse-submodules \
-    https://github.com/end-4/dots-hyprland /tmp/dots-hyprland && \
-    rsync -av /tmp/dots-hyprland/dots/ /etc/skel/ && \
-    rm -rf /tmp/dots-hyprland
+# Step 2: habilitar COPRs separadamente
+RUN dnf5 copr enable errornointernet/quickshell -y
+RUN dnf5 copr enable atim/starship -y
+RUN dnf5 copr enable alternateved/eza -y
+
+# Step 3: instalar hyprland separado do quickshell
+RUN dnf5 install hyprland --setopt=install_weak_deps=False -y
+
+# Step 4: instalar quickshell separado
+RUN dnf5 install quickshell-git --setopt=install_weak_deps=False -y
+
+# Step 5: limpar
+RUN dnf5 clean all && \
+    rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/*
 
 # Instalação dos pacotes definidos nos arquivos de lista
 RUN grep -v '^#' pacotes_necessarios | tr '\n' ' ' | xargs dnf5 install -y && \
