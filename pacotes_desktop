@@ -1,8 +1,6 @@
 # Pacotes do ambiente Hyprland / Illogical Impulse
 hyprlock
 hypridle
-hyprpicker
-hyprsunset
 wl-clipboard
 cliphist
 kitty
@@ -24,7 +22,7 @@ curl
 wget
 rsync
 ripgrep
-imagemagick
+ImageMagick
 slurp
 swappy
 tesseract
