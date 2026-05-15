@@ -88,7 +88,7 @@ O método recomendado é utilizar a ISO de instalação fornecida pelo projeto.
 ## Clonando o projeto
 
 ```bash id="66d9r8"
-git clone https://github.com/Ferlinuxdebian/gnome-minimal.git
+git clone https://github.com/gzSoares/gnome-minimal.git
 cd gnome-minimal
 ```
 
