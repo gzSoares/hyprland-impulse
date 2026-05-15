@@ -37,14 +37,12 @@ RUN dnf5 install dnf5-plugins -y
 RUN dnf5 copr enable errornointernet/quickshell -y
 RUN dnf5 copr enable atim/starship -y
 RUN dnf5 copr enable alternateved/eza -y
+RUN dnf5 copr enable sdegler/hyprland -y   # <- adicionar de volta
 
-# Step 3: instalar hyprland separado do quickshell
+# Step 3: instalar hyprland
 RUN dnf5 install hyprland --setopt=install_weak_deps=False -y
 
-# Step 4: instalar quickshell separado
-RUN dnf5 install quickshell-git --setopt=install_weak_deps=False -y
-
-# Step 5: limpar
+# Step 4: limpar
 RUN dnf5 clean all && \
     rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/*
 
