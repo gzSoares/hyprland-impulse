@@ -35,7 +35,7 @@ RUN dnf5 install 'dnf5-command(copr)' -y && \
     dnf5 copr enable lionheartp/Hyprland -y && \
     dnf5 install hyprland --setopt=install_weak_deps=False -y && \
     dnf5 clean all && \
-    rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/*/var/tmp/*
+    rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/*
 
 # Instalação dos pacotes definidos nos arquivos de lista
 RUN grep -v '^#' pacotes_necessarios | tr '\n' ' ' | xargs dnf5 install -y && \
