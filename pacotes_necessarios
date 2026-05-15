@@ -18,4 +18,5 @@ unzip
 usbutils
 sysfsutils
 bash-color-prompt
+nano
 thermald
