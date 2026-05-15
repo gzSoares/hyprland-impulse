@@ -37,6 +37,17 @@ RUN dnf5 install -y dnf5-plugins && \
     dnf5 copr enable -y alternateved/eza && \
     dnf5 clean all
 
+# Instalar dependências do Hyprland primeiro (aquamarine traz libdisplay-info)
+RUN dnf5 install -y \
+    aquamarine \
+    hyprcursor \
+    hyprgraphics \
+    hyprlang \
+    hyprutils \
+    hyprwayland-scanner && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
 # Instalar Hyprland e ecossistema
 RUN dnf5 install -y \
     hyprland \
