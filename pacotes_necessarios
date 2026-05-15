@@ -4,16 +4,11 @@
 ffmpegthumbnailer
 xdg-utils
 compsize
-langpacks-core-pt_BR
 flatpak
 toolbox
 distrobox
 git
 tree
-langpacks-fonts-pt
-langpacks-pt_BR
-tuned
-tuned-ppd
 zram-generator
 spice-vdagent
 podman
