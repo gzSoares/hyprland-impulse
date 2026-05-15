@@ -31,7 +31,8 @@ RUN mkdir -vp /var/roothome /data /var/home && \
     rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/*
 
 # Instalação do gnome-shell minimalista
-RUN dnf copr enable lionheartp/Hyprland -y && \
+RUN dnf install -y dnf5-plugins && \
+    dnf copr enable lionheartp/Hyprland -y && \
     dnf install hyprland --setopt=install_weak_deps=False -y && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/*
