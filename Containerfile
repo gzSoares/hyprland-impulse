@@ -178,6 +178,7 @@ RUN dnf5 install -y \
 # Utilitários de entrada e sistema
 RUN dnf5 install -y \
     upower \
+    lm_sensors \
     wtype \
     ydotool && \
     dnf5 clean all && \
@@ -202,6 +203,9 @@ RUN dnf5 install -y \
 RUN dnf5 install -y --setopt=install_weak_deps=False \
     mpvpaper \
     plasma-systemmonitor \
+    java-latest-openjdk \
+    gnome-disk-utility \
+    ark \
     unzip && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
