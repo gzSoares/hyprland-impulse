@@ -23,6 +23,12 @@ flatpak install -y flathub \
     page.codeberg.libre_menu_editor.LibreMenuEditor \
     com.dec05eba.gpu_screen_recorder
 
+# Override global de tema dark para todos os apps
+flatpak override --system --env=GTK_THEME=adw-gtk3-dark
+flatpak override --system --env=GTK_USE_PORTAL=1
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
 # Copia dotfiles do skel pro home de todos os usuários que ainda não os têm
 for userdir in /var/home/*/; do
     user=$(basename "$userdir")
