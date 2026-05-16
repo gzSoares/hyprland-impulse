@@ -19,8 +19,6 @@ A proposta do projeto é ser simples e didática, ajudando iniciantes a aprender
 
 </details>
 
-<details>
-
 </details>
 
 <div align="center">
