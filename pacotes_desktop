@@ -1,35 +1,13 @@
 # Pacotes do ambiente Hyprland / Illogical Impulse
-hyprlock
-hypridle
-wl-clipboard
-cliphist
-kitty
-fish
-starship
-eza
-fuzzel
-wlogout
-playerctl
-pavucontrol
-wireplumber
+# Apenas pacotes NÃO instalados diretamente no Containerfile
+
+# Áudio
 pipewire-pulse
-brightnessctl
-ddcutil
-matugen
-jq
+
+# Utilitários de linha de comando
 bc
-curl
-wget
-rsync
-ripgrep
-ImageMagick
-slurp
-swappy
-tesseract
-tesseract-langpack-eng
-xdg-desktop-portal
-xdg-desktop-portal-hyprland
-xdg-desktop-portal-gtk
+
+# Qt6 (dependências para Quickshell e apps KDE)
 qt6-qtbase
 qt6-qtdeclarative
 qt6-qt5compat
@@ -37,16 +15,15 @@ qt6-qtsvg
 qt6-qtimageformats
 qt6-qtmultimedia
 qt6-qtwayland
+
+# KDE Frameworks
 kf6-kirigami2
 kdialog
-NetworkManager
-gnome-keyring
-dolphin
-qalculate
-upower
-fontconfig
+
+# Integração de sistema
 xdg-user-dirs
-adw-gtk3-theme
 ibus-gtk4
+
+# Aplicativos utilitários
 gnome-disk-utility
 gnome-text-editor
