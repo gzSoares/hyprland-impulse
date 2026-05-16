@@ -1,39 +1,59 @@
-## Fedora Bootc GNOME Minimal
+## Fedora Bootc Hyprland + Illogical-Impulse Shell
 
 Este repositório contém uma imagem personalizada baseada no fedora-boot imagem oficial, usando o conceito de sistemas imutáveis com bootc.
 
 A proposta do projeto é ser simples e didática, ajudando iniciantes a aprender como criar suas próprias imagens de sistema personalizadas com bootc.
 
-A imagem utiliza um ambiente GNOME extremamente minimalista, trazendo apenas o básico para iniciar o sistema e permitindo que o próprio usuário escolha os aplicativos que deseja instalar depois.
-
 ## O que acompanha a imagem
 
-A instalação inclui apenas:
+</details>
 
-* GNOME Shell
-* GNOME Software com suporte ao Flathub
-* Nautilus
-* Terminal Ptxys
-* Distrobox
-* Toolbox
+<details>
+  <summary>Software overview</summary>
 
-Aplicativos como navegador, suíte office, players de mídia e outros programas não vêm instalados por padrão.
-A ideia é deixar o sistema limpo e permitir que cada usuário monte seu próprio desktop.
+  | Software | Purpose |
+  | ------------- | ------------- |
+  | [Hyprland](https://github.com/hyprwm/hyprland) | The compositor (manages and renders windows) |
+  | [Quickshell](https://quickshell.outfoxxed.me/) | A QtQuick-based widget system, used for the status bar, sidebars, etc. |
+  | Others | See [deps-info.md](https://github.com/end-4/dots-hyprland/blob/main/sdata/deps-info.md) |
 
-## Objetivo do projeto
+</details>
 
-Este projeto foi criado para:
+<details>
+    <summary>Discord</summary>
+        <a href="https://discord.gg/GtdRBXgMwq"> Server link</a> | I hope this provides a friendlier environment for support without needing me to personally accept every friend request/DM. For real issues, prefer GitHub
 
-* Aprender sobre bootc
-* Entender como funcionam imagens OCI inicializáveis
-* Criar sistemas personalizados baseados no Fedora
-* Gerar ISOs de instalação próprias
-* Explorar sistemas imutáveis de forma simples
+</details>
+
+<div align="center">
+    <h2>• screenshots •</h2>
+    <h3></h3>
+</div>
+
+<div align="center">
+    <img src="assets/illogical-impulse.svg" alt="illogical-impulse logo" style="float:left; width:400;">
+</div>
+
+Widget system: Quickshell | Support: Yes
+
+[Showcase video](https://www.youtube.com/watch?v=RPwovTInagE)
+
+| AI, settings app | Some widgets |
+|:---|:---------------|
+| <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5d4e7d07-d0b4-4406-a4c9-ed7ba90e3fe4" /> | <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6a32395f-9437-4192-8faf-2951a9e84cbe" /> |
+| Window management | wow look its orange |
+| <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c51bed8b-3670-4d4c-9074-873be224fb8e" /> | <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/98703a66-0743-439f-a721-cef7afa6ab95" /> |
+
+<div align="center">
+    <h2>• thank you •</h2>
+    <h3></h3>
+</div>
 
 ## Base da imagem
 
 * Base: `fedora-bootc`
-* Interface: GNOME Minimal
+* Compositor: Hyprland
+* Interface: Illogical-Impulse Material Shell
 * Sistema: Imutável via bootc
 * Distribuição base: Fedora Project
 * Formato de distribuição: Imagem OCI inicializável
