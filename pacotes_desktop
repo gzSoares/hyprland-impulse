@@ -47,5 +47,6 @@ upower
 fontconfig
 xdg-user-dirs
 adw-gtk3-theme
+ibus-gtk4
 gnome-disk-utility
 gnome-text-editor
