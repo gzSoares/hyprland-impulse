@@ -98,7 +98,7 @@ cd hyprland-impulse
 sudo buildah build \
     --skip-unused-stages=false \
     --security-opt=label=disable \
-    -t "gnome-minimal" \
+    -t "hyprland-impulse" \
     -f Containerfile \
     -v $(pwd):/run/src \
     .
