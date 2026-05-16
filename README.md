@@ -158,3 +158,5 @@ Para baixar a ISO gerada automaticamente:
 - **[end-4](https://github.com/end-4):** Creator of illogical-impulse.
 - **[Quickshell](https://quickshell.org/):** Widget system.
 - **[Hyprland](https://hypr.land/):** Compositor.
+
+**ESTE PROJETO FOI CRIADO COM BASE NA MINHA EXPERIÊNCIA DE USO. MAS SINTA-SE À VONTADE PARA EXPLORAR, TESTAR E ADAPTAR DA FORMA QUE FIZER MAIS SENTIDO PARA VOCÊ.** 
