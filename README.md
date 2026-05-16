@@ -20,8 +20,6 @@ A proposta do projeto é ser simples e didática, ajudando iniciantes a aprender
 </details>
 
 <details>
-    <summary>Discord</summary>
-        <a href="https://discord.gg/GtdRBXgMwq"> Server link</a> | I hope this provides a friendlier environment for support without needing me to personally accept every friend request/DM. For real issues, prefer GitHub
 
 </details>
 
