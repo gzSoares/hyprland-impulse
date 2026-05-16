@@ -152,8 +152,6 @@ Para baixar a ISO gerada automaticamente:
 4. Role até a seção `Artifacts`
 5. Baixe o artefato contendo a ISO
 
-![Fedora Bootc GNOME Minimal](https://i.imgur.com/cYXwJIl.png)
-
 ## Credits
 
 - **[Fedora-Bootc](https://docs.fedoraproject.org/en-US/bootc/):** Base system.
