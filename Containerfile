@@ -177,6 +177,11 @@ RUN dnf5 install -y \
 
 # Utilitários de entrada e sistema
 RUN dnf5 install -y \
+    polkit \
+    polkit-kde \
+    polkit-qt \
+    polkit-qt5-1 \
+    polkit-qt6-1 \
     upower \
     lm_sensors \
     wtype \
