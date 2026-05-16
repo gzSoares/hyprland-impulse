@@ -21,8 +21,7 @@ flatpak install -y flathub \
     org.gtk.Gtk3theme.adw-gtk3-dark \
     page.codeberg.JakobDev.jdReplace \
     page.codeberg.libre_menu_editor.LibreMenuEditor \
-    com.dec05eba.gpu_screen_recorder \
-    org.gnome.TextEditor
+    com.dec05eba.gpu_screen_recorder
 
 # Copia dotfiles do skel pro home de todos os usuários que ainda não os têm
 for userdir in /var/home/*/; do
