@@ -29,60 +29,194 @@ RUN mkdir -vp /var/roothome /data /var/home && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Habilitar repositórios COPR
-# ashbuk/Hyprland-Fedora: build limpo sem conflito de ABI (sem depender de libs externas)
 RUN dnf5 install -y dnf5-plugins && \
-    dnf5 copr enable -y ashbuk/Hyprland-Fedora && \
-    dnf5 copr enable -y errornointernet/quickshell && \
-    dnf5 copr enable -y heus-sueh/packages && \
-    dnf5 copr enable -y atim/starship && \
+    dnf5 copr enable -y ririko66z/dots-hyprland && \
+    dnf5 copr enable -y sdegler/hyprland && \
+    dnf5 copr enable -y deltacopy/darkly && \
     dnf5 copr enable -y alternateved/eza && \
+    dnf5 copr enable -y atim/starship && \
     dnf5 clean all
 
-# Instalar Hyprland e utilitários (ashbuk empacota tudo junto sem conflito)
+# Áudio
 RUN dnf5 install -y \
+    cava \
+    pavucontrol \
+    wireplumber \
+    libdbusmenu-gtk3-devel \
+    playerctl && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Backlight
+RUN dnf5 install -y --setopt=install_weak_deps=False \
+    geoclue2 \
+    brightnessctl \
+    ddcutil && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Utilitários básicos
+RUN dnf5 install -y \
+    coreutils \
+    cliphist \
+    cmake \
+    curl \
+    wget2 \
+    ripgrep \
+    jq \
+    xdg-utils \
+    rsync \
+    yq && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Cursor Bibata
+RUN dnf5 install -y bibata-cursor-theme && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Temas, fontes e ambiente visual
+RUN dnf5 install -y \
+    adw-gtk3-theme \
+    breeze-cursor-theme \
+    grub2-breeze-theme \
+    breeze-icon-theme \
+    breeze-icon-theme-fedora \
+    kf6-breeze-icons \
+    sddm-breeze \
+    breeze-plus-icon-theme \
+    darkly \
+    eza \
+    fish \
+    fontconfig \
+    kitty \
+    florian-karsten-space-grotesk-fonts \
+    starship \
+    jetbrains-mono-nerd-fonts \
+    google-material-symbols-vf-rounded-fonts \
+    material-icons-fonts \
+    readex-pro-fonts-all \
+    google-rubik-vf-fonts \
+    twitter-twemoji-fonts \
+    google-sans-flex-vf-fonts && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Hyprland
+RUN dnf5 install -y --setopt=install_weak_deps=False \
     hyprland \
-    hyprlock \
-    hypridle \
-    xdg-desktop-portal-hyprland \
-    xdg-desktop-portal-gtk \
-    xdg-desktop-portal && \
+    "hyprland=guiutils" \
+    "hyprland=qt-support" \
+    hyprsunset \
+    wl-clipboard && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Instalar Quickshell (motor de widgets do II)
+# KDE / sistema
 RUN dnf5 install -y \
-    quickshell \
-    qt6-qtbase \
-    qt6-qtdeclarative \
-    qt6-qt5compat \
-    qt6-qtsvg \
-    qt6-qtimageformats \
-    qt6-qtmultimedia \
-    qt6-qtwayland \
-    kf6-kirigami2 \
-    kdialog && \
+    bluedevil \
+    gnome-keyring \
+    NetworkManager \
+    plasma-nm \
+    polkit-kde \
+    dolphin \
+    plasma-systemsettings && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Instalar pacotes de sistema
+# MicroTeX (renderizador LaTeX do II)
+RUN dnf5 install -y microtex && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Portais XDG
+RUN dnf5 install -y \
+    xdg-desktop-portal \
+    xdg-desktop-portal-gtk \
+    xdg-desktop-portal-kde \
+    xdg-desktop-portal-hyprland && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Dependências Python e build
+RUN dnf5 install -y --setopt=install_weak_deps=False \
+    clang \
+    uv \
+    gtk4-devel \
+    libadwaita-devel \
+    libsoup3-devel \
+    libportal-gtk4 \
+    gobject-introspection-devel \
+    python3 \
+    python3.12 \
+    python3-devel \
+    python3.12-devel && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Quickshell e matugen (via repo local do II)
+# O repo local precisa estar disponível — aqui usamos o COPR do errornointernet como substituto
+RUN dnf5 install -y dnf5-plugins && \
+    dnf5 copr enable -y errornointernet/quickshell && \
+    dnf5 copr enable -y heus-sueh/packages && \
+    dnf5 install -y quickshell matugen && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Captura de tela
+RUN dnf5 install -y \
+    hyprshot \
+    slurp \
+    swappy \
+    tesseract \
+    tesseract-langpack-eng \
+    tesseract-langpack-chi_sim \
+    wf-recorder && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Utilitários de entrada e sistema
+RUN dnf5 install -y \
+    upower \
+    wtype \
+    ydotool && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Utilitários extras
+RUN dnf5 install -y \
+    fuzzel \
+    glib2 \
+    ImageMagick \
+    hypridle \
+    hyprlock \
+    hyprpicker \
+    songrec \
+    translate-shell \
+    qalculate \
+    wlogout && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Extras opcionais
+RUN dnf5 install -y --setopt=install_weak_deps=False \
+    mpvpaper \
+    plasma-systemmonitor \
+    unzip && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+# Instalar pacotes de sistema (pacotes_necessarios)
 RUN grep -v '^#' pacotes_necessarios | grep -v '^$' | \
     xargs dnf5 install -y && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Instalar pacotes de desktop
-RUN grep -v '^#' pacotes_desktop | grep -v '^$' | \
-    xargs dnf5 install -y && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
 # Clonar dotfiles do Illogical Impulse para /etc/skel/
-RUN dnf5 install -y git rsync && \
-    git clone --filter=blob:none --recurse-submodules \
+RUN git clone --filter=blob:none --recurse-submodules \
         https://github.com/end-4/dots-hyprland /tmp/dots-hyprland && \
     rsync -av /tmp/dots-hyprland/dots/ /etc/skel/ && \
     rm -rf /tmp/dots-hyprland && \
-    dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Habilitar/mascarar serviços
