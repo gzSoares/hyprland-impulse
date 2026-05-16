@@ -121,7 +121,7 @@ sudo podman run \
     quay.io/centos-bootc/bootc-image-builder:latest \
     --type anaconda-iso \
     --rootfs btrfs \
-    localhost/gnome-minimal
+    localhost/hyprland-impulse
 ```
 
 ## Download da ISO pelo GitHub Actions
