@@ -159,4 +159,11 @@ Para baixar a ISO gerada automaticamente:
 - **[Quickshell](https://quickshell.org/):** Widget system.
 - **[Hyprland](https://hypr.land/):** Compositor.
 
-**ESTE PROJETO FOI CRIADO COM BASE NA MINHA EXPERIÊNCIA DE USO. MAS SINTA-SE À VONTADE PARA EXPLORAR, TESTAR E ADAPTAR DA FORMA QUE FIZER MAIS SENTIDO PARA VOCÊ.** 
+# 🚀 Sobre o Projeto
+
+> **Este projeto foi criado com base na minha experiência de uso.**  
+> Mas sinta-se à vontade para explorar, testar e adaptar da forma que fizer mais sentido para você.
+
+---
+
+✨ Feedbacks, sugestões e melhorias são sempre bem-vindos.
