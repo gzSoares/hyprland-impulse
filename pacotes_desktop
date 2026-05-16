@@ -46,3 +46,6 @@ qalculate
 upower
 fontconfig
 xdg-user-dirs
+adw-gtk3-theme
+gnome-disk-utility
+gnome-text-editor
