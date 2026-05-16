@@ -1,21 +1,34 @@
-# Pacotes essencias
+# Essêncial (é bom manter esses pacotes e não alterar)
 @networkmanager-submodules
 @multimedia
 ffmpegthumbnailer
 xdg-utils
 compsize
 flatpak
-toolbox
-distrobox
 git
 tree
+tuned
+tuned-ppd
 zram-generator
+spice-vdagent
 podman
 fpaste
 auditctl
 unzip
 usbutils
 sysfsutils
-bash-color-prompt
-nano
 thermald
+ffmpegthumbs
+
+# Pacotes não essênciais (pode ser alterado a gosto)
+@virtualization
+distrobox
+micro
+ps_mem
+copyq
+ripgrep
+bash-color-prompt
+fira-code-fonts
+btop
+fastfetch
+adw-gtk3-theme
