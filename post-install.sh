@@ -16,6 +16,7 @@ flatpak install -y flathub \
     com.discordapp.Discord \
     com.spotify.Client \
     com.thincast.client \
+    org.telegram.desktop \
     im.riot.Riot \
     org.fedoraproject.MediaWriter \
     org.gtk.Gtk3theme.adw-gtk3-dark \
