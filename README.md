@@ -15,7 +15,7 @@ A proposta do projeto é ser simples e didática, ajudando iniciantes a aprender
   | ------------- | ------------- |
   | [Hyprland](https://github.com/hyprwm/hyprland) | The compositor (manages and renders windows) |
   | [Quickshell](https://quickshell.outfoxxed.me/) | A QtQuick-based widget system, used for the status bar, sidebars, etc. |
-  | Others | See [deps-info.md](https://github.com/end-4/dots-hyprland/blob/main/sdata/deps-info.md) |
+  | [Illogical-Impulse]([https://github.com/hyprwm/hyprland](https://github.com/end-4/dots-hyprland)) |  |
 
 </details>
 
