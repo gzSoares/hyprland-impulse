@@ -154,6 +154,8 @@ Para baixar a ISO gerada automaticamente:
 
 ![Fedora Bootc GNOME Minimal](https://i.imgur.com/cYXwJIl.png)
 
-## Sobre o projeto
+## Credits
 
-O foco deste repositório não é entregar um sistema cheio de aplicativos prontos, mas sim servir como base de aprendizado para quem deseja entender melhor o ecossistema bootc e começar a criar suas próprias imagens de sistema personalizadas.
+- **[end-4](https://github.com/end-4):** Creator of illogical-impulse.
+- **[Quickshell](https://quickshell.org/):** Widget system.
+- **[Hyprland](https://hypr.land/):** Compositor.
