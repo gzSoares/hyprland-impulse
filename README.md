@@ -161,9 +161,7 @@ Para baixar a ISO gerada automaticamente:
 
 # 🚀 Sobre o Projeto
 
-> **Este projeto foi criado com base na minha experiência de uso.**  
-> Mas sinta-se à vontade para explorar, testar e adaptar da forma que fizer mais sentido para você.
+> ✨ **Este projeto foi criado com base na minha experiência de uso.**  
+> Mas sinta-se à vontade para explorar, testar e adaptar da forma que fizer mais sentido para você. ✨
 
 ---
-
-✨ Feedbacks, sugestões e melhorias são sempre bem-vindos.
