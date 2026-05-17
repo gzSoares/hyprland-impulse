@@ -238,7 +238,6 @@ RUN git clone --filter=blob:none --recurse-submodules \
 RUN systemctl enable NetworkManager && \
     systemctl enable bluetooth && \
     systemctl enable sddm && \
-    systemctl enable ydotoold && \
     systemctl enable thermald && \
     systemctl enable geoclue && \
     systemctl mask systemd-remount-fs.service && \
