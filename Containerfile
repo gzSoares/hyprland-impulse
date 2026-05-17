@@ -77,7 +77,7 @@ RUN dnf5 install -y bibata-cursor-theme && \
 
 # Temas, fontes e ambiente visual
 RUN dnf5 install -y \
-    adw-gtk3-dark \
+    adw-gtk3-theme \
     breeze-cursor-theme \
     grub2-breeze-theme \
     breeze-icon-theme \
@@ -232,6 +232,7 @@ RUN git clone --filter=blob:none --recurse-submodules \
 # Habilitar/mascarar serviços
 RUN systemctl enable NetworkManager && \
     systemctl enable bluetooth && \
+    systemctl enable thermald && \
     systemctl mask systemd-remount-fs.service && \
     rm -rfv /var/roothome/.*
 
