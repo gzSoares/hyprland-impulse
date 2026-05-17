@@ -232,7 +232,6 @@ RUN git clone --filter=blob:none --recurse-submodules \
 # Habilitar/mascarar serviços
 RUN systemctl enable NetworkManager && \
     systemctl enable bluetooth && \
-    systemctl enable thermald && \
     systemctl mask systemd-remount-fs.service && \
     rm -rfv /var/roothome/.*
 
