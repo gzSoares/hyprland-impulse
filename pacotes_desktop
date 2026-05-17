@@ -17,9 +17,9 @@ qt6-qtmultimedia
 qt6-qtwayland
 
 # KDE Frameworks
-kf6-kirigami2
 kdialog
+kf6-kirigami2
 
 # Integração de sistema
-xdg-user-dirs
 ibus-gtk4
+xdg-user-dirs
