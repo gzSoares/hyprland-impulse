@@ -17,7 +17,6 @@ tree
 tuned
 tuned-ppd
 usbutils
-xdg-user-dirs
 
 # Pacotes não essênciais (pode ser alterado a gosto)
 @virtualization
