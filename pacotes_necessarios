@@ -1,28 +1,28 @@
 # Essêncial (é bom manter esses pacotes e não alterar)
 @networkmanager-submodules
 @multimedia
+auditctl
 compsize
+fpaste
+ffmpegthumbs
 flatpak
 git
+podman
+podman-compose
+spice-vdagent
+sysfsutils
+thermald
 tree
 tuned
 tuned-ppd
-spice-vdagent
-podman
-podman-compose
-fpaste
-auditctl
 usbutils
-sysfsutils
-ffmpegthumbs
 
 # Pacotes não essênciais (pode ser alterado a gosto)
 @virtualization
+bash-color-prompt
+btop
 distrobox
-toolbox
+fastfetch
 micro
 ps_mem
-bash-color-prompt
-fira-code-fonts
-btop
-fastfetch
+toolbox
