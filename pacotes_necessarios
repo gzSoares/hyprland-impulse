@@ -30,6 +30,8 @@ ps_mem
 toolbox
 
 # Qt6 (dependências para Quickshell e apps KDE)
+kdialog
+kf6-kirigami2
 qt6-qtbase
 qt6-qtdeclarative
 qt6-qt5compat
