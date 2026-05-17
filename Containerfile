@@ -40,6 +40,8 @@ RUN dnf5 install -y dnf5-plugins && \
 # Áudio
 RUN dnf5 install -y \
     cava \
+    pipewire \
+    pipewire-pulse \
     pavucontrol \
     wireplumber \
     libdbusmenu-gtk3-devel \
@@ -82,6 +84,7 @@ RUN dnf5 install -y \
     breeze-icon-theme \
     breeze-icon-theme-fedora \
     kf6-breeze-icons \
+    sddm \
     sddm-breeze \
     breeze-plus-icon-theme \
     darkly \
@@ -114,10 +117,11 @@ RUN dnf5 install -y --setopt=install_weak_deps=False \
 # KDE / sistema
 RUN dnf5 install -y \
     bluedevil \
+    bluez \
+    bluez-utils \
     gnome-keyring \
     NetworkManager \
     plasma-nm \
-    polkit-kde \
     dolphin \
     plasma-systemsettings && \
     dnf5 clean all && \
@@ -234,7 +238,10 @@ RUN git clone --filter=blob:none --recurse-submodules \
 # Habilitar/mascarar serviços
 RUN systemctl enable NetworkManager && \
     systemctl enable bluetooth && \
+    systemctl enable sddm && \
+    systemctl enable ydotoold && \
     systemctl enable thermald && \
+    systemctl enable geoclue && \
     systemctl mask systemd-remount-fs.service && \
     rm -rfv /var/roothome/.*
 
