@@ -5,20 +5,3 @@ pipewire-pulse
 
 # Utilitários de linha de comando
 bc
-
-# Qt6 (dependências para Quickshell e apps KDE)
-qt6-qtbase
-qt6-qtdeclarative
-qt6-qt5compat
-qt6-qtsvg
-qt6-qtimageformats
-qt6-qtmultimedia
-qt6-qtwayland
-
-# KDE Frameworks
-kdialog
-kf6-kirigami2
-
-# Integração de sistema
-ibus-gtk4
-xdg-user-dirs
