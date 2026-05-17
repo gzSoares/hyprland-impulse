@@ -23,7 +23,3 @@ kdialog
 # Integração de sistema
 xdg-user-dirs
 ibus-gtk4
-
-# Aplicativos utilitários
-gnome-disk-utility
-gnome-text-editor
