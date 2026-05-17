@@ -7,6 +7,7 @@ fpaste
 ffmpegthumbs
 flatpak
 git
+ibus-gtk4
 podman
 podman-compose
 spice-vdagent
@@ -16,7 +17,7 @@ tree
 tuned
 tuned-ppd
 usbutils
-xdg-user-dir
+xdg-user-dirs
 
 # Pacotes não essênciais (pode ser alterado a gosto)
 @virtualization
