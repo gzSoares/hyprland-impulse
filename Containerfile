@@ -131,10 +131,13 @@ RUN dnf5 install -y microtex && \
 
 # Portais XDG
 RUN dnf5 install -y \
+    xdg-dbus-proxy \
     xdg-desktop-portal \
     xdg-desktop-portal-gtk \
+    xdg-desktop-portal-hyprland \
     xdg-desktop-portal-kde \
-    xdg-desktop-portal-hyprland && \
+    xdg-user-dirs \
+    xdg-utils && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
