@@ -64,7 +64,6 @@ RUN dnf5 install -y \
     wget2 \
     ripgrep \
     jq \
-    xdg-utils \
     rsync \
     yq && \
     dnf5 clean all && \
