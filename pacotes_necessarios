@@ -3,6 +3,7 @@
 @multimedia
 auditctl
 compsize
+dconf-editor
 fpaste
 ffmpegthumbs
 flatpak
