@@ -3,7 +3,6 @@
 @multimedia
 auditctl
 compsize
-dconf-editor
 fpaste
 ffmpegthumbs
 flatpak
@@ -32,6 +31,8 @@ toolbox
 # Qt6 (dependências para Quickshell e apps KDE)
 kdialog
 kf6-kirigami2
+kvantum
+qt6ct
 qt6-qtbase
 qt6-qtdeclarative
 qt6-qt5compat
