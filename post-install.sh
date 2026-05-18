@@ -11,18 +11,8 @@ fi
 
 # Instala Flatpaks do Flathub
 flatpak install -y flathub \
-    com.dec05eba.gpu_screen_recorder \
-    com.discordapp.Discord \
-    com.spotify.Client \
-    com.thincast.client \
-    im.riot.Riot \
-    org.fedoraproject.MediaWriter \
     org.gtk.Gtk3theme.adw-gtk3-dark \
-    org.mozilla.firefox \
-    org.remmina.Remmina \
-    org.telegram.desktop \
-    page.codeberg.libre_menu_editor.LibreMenuEditor \
-    page.codeberg.JakobDev.jdReplace 
+    org.mozilla.firefox
 
 # Override global de tema dark para todos os apps
 flatpak override --system --env=GTK_THEME=adw-gtk3-dark
