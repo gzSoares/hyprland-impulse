@@ -15,9 +15,7 @@ flatpak install -y flathub \
     ca.desrt.dconf-editor \
     org.mozilla.firefox
 
-# Override global de tema dark para todos os apps
-flatpak override --system --env=GTK_THEME=adw-gtk3-dark
-flatpak override --system --env=GTK_USE_PORTAL=1
+# Tema escuro nos apps
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
