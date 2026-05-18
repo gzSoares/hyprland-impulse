@@ -43,4 +43,7 @@ for userdir in /var/home/*/; do
             chown -R "$user:$user" "$target"
         fi
     done
+
+    sudo -u "$user" env HOME="$userdir" xdg-user-dirs-update --force
+    
 done
