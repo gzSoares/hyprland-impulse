@@ -12,6 +12,7 @@ fi
 # Instala Flatpaks do Flathub
 flatpak install -y flathub \
     org.gtk.Gtk3theme.adw-gtk3-dark \
+    ca.desrt.dconf-editor \
     org.mozilla.firefox
 
 # Override global de tema dark para todos os apps
