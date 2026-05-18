@@ -13,7 +13,21 @@ fi
 flatpak install -y flathub \
     org.gtk.Gtk3theme.adw-gtk3-dark \
     ca.desrt.dconf-editor \
-    org.mozilla.firefox
+    org.mozilla.firefox \
+    com.dec05eba.gpu_screen_recorder \
+    com.discordapp.Discord \
+    com.spotify.Client \
+    com.thincast.client \
+    org.remmina.Remmina \
+    im.riot.Riot \
+    io.github.diegopvlk.Cine \
+    org.fedoraproject.MediaWriter\
+    org.gnome.Boxes \
+    org.gnome.Calculator \
+    org.gnome.TextEditor \
+    org.kde.gwenview \
+    page.codeberg.JakobDev.jdReplace \
+    page.codeberg.libre_menu_editor.LibreMenuEditor
 
 # Override global de tema escuro para todos os apps
 flatpak override --system --env=GTK_THEME=adw-gtk3-dark
@@ -23,6 +37,4 @@ gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' || true
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' || true
 
 # Criar as pastas na /home
-xdg-user-dirs-update
-    
-done
+xdg-user-dirs-update --force
