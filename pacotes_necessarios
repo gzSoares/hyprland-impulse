@@ -8,8 +8,11 @@ ffmpegthumbs
 flatpak
 git
 ibus-gtk4
+langpacks-fonts-en
+langpacks-en
 podman
 podman-compose
+ptyxis
 spice-vdagent
 sysfsutils
 thermald
