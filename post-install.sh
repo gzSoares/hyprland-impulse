@@ -10,7 +10,7 @@ if flatpak remotes | grep -q '^fedora'; then
 fi
 
 # Criar as pastas na /home
-sudo -u $USER xdg-user-dirs-update --force
+xdg-user-dirs-update
 
 # Instala Flatpaks do Flathub
 flatpak install -y flathub \
