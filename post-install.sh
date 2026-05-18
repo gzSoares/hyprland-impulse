@@ -15,24 +15,14 @@ flatpak install -y flathub \
     ca.desrt.dconf-editor \
     org.mozilla.firefox
 
-# Tema escuro nos apps
-gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+# Override global de tema escuro para todos os apps
+flatpak override --system --env=GTK_THEME=adw-gtk3-dark
+flatpak override --system --env=GTK_USE_PORTAL=1
 
-# Copia dotfiles do skel pro home de todos os usuários que ainda não os têm
-for userdir in /var/home/*/; do
-    user=$(basename "$userdir")
-    if [ "$user" = "*" ]; then continue; fi
-    for dotfile in /etc/skel/.* /etc/skel/*; do
-        base=$(basename "$dotfile")
-        [ "$base" = "." ] || [ "$base" = ".." ] && continue
-        target="$userdir/$base"
-        if [ ! -e "$target" ]; then
-            cp -r "$dotfile" "$target"
-            chown -R "$user:$user" "$target"
-        fi
-    done
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' || true
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' || true
 
-    sudo -u "$user" env HOME="$userdir" xdg-user-dirs-update --force
+# Criar as pastas na /home
+xdg-user-dirs-update
     
 done
