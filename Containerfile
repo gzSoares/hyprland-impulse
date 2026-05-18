@@ -204,6 +204,7 @@ RUN dnf5 install -y \
     hypridle \
     hyprlock \
     hyprpicker \
+    ntfs-3g \
     songrec \
     translate-shell \
     qalculate \
