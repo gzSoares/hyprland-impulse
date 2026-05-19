@@ -158,7 +158,7 @@ Para baixar a ISO gerada automaticamente:
 - **[end-4](https://github.com/end-4):** Creator of illogical-impulse.
 - **[Quickshell](https://quickshell.org/):** Widget system.
 - **[Hyprland](https://hypr.land/):** Compositor.
-- ** Um agradecimento especial ao [Ferlinuxdebian](https://github.com/Ferlinuxd) que me ajudou na realização desse projeto. 
+- ** Um agradecimento especial ao [Ferlinuxdebian](https://github.com/Ferlinuxdebian) que me ajudou na realização desse projeto. 
 
 # 🚀 Sobre o Projeto
 
