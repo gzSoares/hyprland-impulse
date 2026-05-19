@@ -15,7 +15,6 @@ podman-compose
 ptyxis
 spice-vdagent
 sysfsutils
-thermald
 tree
 tuned
 tuned-ppd
