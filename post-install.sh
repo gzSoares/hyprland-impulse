@@ -11,9 +11,11 @@ fi
 
 # Instala Flatpaks do Flathub
 flatpak install -y flathub \
+    org.gtk.Gtk3theme.adw-gtk3 \
     org.gtk.Gtk3theme.adw-gtk3-dark \
-    ca.desrt.dconf-editor \
-    org.mozilla.firefox \
+    com.github.tchx84.Flatseal \
+    org.telegram.desktop \
+    com.google.Chrome \
     com.dec05eba.gpu_screen_recorder \
     com.discordapp.Discord \
     com.spotify.Client \
