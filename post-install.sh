@@ -9,9 +9,6 @@ if flatpak remotes | grep -q '^fedora'; then
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 fi
 
-# Criar as pastas na /home
-xdg-user-dirs-update
-
 # Instala Flatpaks do Flathub
 flatpak install -y flathub \
     org.gtk.Gtk3theme.adw-gtk3-dark \
