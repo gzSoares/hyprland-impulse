@@ -1,7 +1,1 @@
 # Apenas pacotes NÃO instalados diretamente no Containerfile
-
-# Áudio
-pipewire-pulse
-
-# Utilitários de linha de comando
-bc
