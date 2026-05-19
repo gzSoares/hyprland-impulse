@@ -30,6 +30,7 @@ RUN mkdir -vp /var/roothome /data /var/home && \
 
 # Habilitar repositórios COPR
 RUN dnf5 install -y dnf5-plugins && \
+    dnf config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_44/home:luisbocanegra.repo && \
     dnf5 copr enable -y ririko66z/dots-hyprland && \
     dnf5 copr enable -y sdegler/hyprland && \
     dnf5 copr enable -y deltacopy/darkly && \
@@ -91,6 +92,7 @@ RUN dnf5 install -y \
     eza \
     fish \
     fontconfig \
+    kde-material-you-colors \
     kitty \
     florian-karsten-space-grotesk-fonts \
     starship \
