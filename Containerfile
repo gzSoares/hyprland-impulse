@@ -41,6 +41,7 @@ RUN dnf5 install -y dnf5-plugins && \
 # Áudio
 RUN dnf5 install -y \
     cava \
+    easyeffects \
     pipewire \
     pipewire-pulse \
     pavucontrol \
@@ -125,6 +126,8 @@ RUN dnf5 install -y \
     NetworkManager \
     plasma-nm \
     dolphin \
+    plasma-browser-integration \
+    plasma-systemmonitor \
     plasma-systemsettings && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
@@ -217,7 +220,6 @@ RUN dnf5 install -y \
 # Extras opcionais
 RUN dnf5 install -y --setopt=install_weak_deps=False \
     mpvpaper \
-    plasma-systemmonitor \
     java-latest-openjdk \
     gnome-disk-utility \
     ark \
