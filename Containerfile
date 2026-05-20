@@ -203,6 +203,7 @@ RUN dnf5 install -y \
 
 # Utilitários extras
 RUN dnf5 install -y \
+    ffmpeg-free \
     fuzzel \
     glib2 \
     ImageMagick \
