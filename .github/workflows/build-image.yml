@@ -155,7 +155,7 @@ jobs:
       - name: Upload da ISO (Busca Recursiva)
         uses: actions/upload-artifact@v4
         with:
-          name: gnome-minimal-iso
+          name: hyprland-impulse-iso
           # Usamos o wildcard ** para encontrar a ISO independente da subpasta (anaconda/ ou iso/)
           path: ./output/**/install.iso
           retention-days: 5
