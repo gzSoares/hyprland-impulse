@@ -5,14 +5,14 @@ LABEL containers.bootc="1"
 
 # Copia arquivos de configuração e scripts
 COPY locale.conf post-install.sh pacotes_desktop pacotes_necessarios \
-     post-install.service vconsole.conf zram-generator.conf ./
+    post-install.service vconsole.conf zram-generator.conf ./
 
 # Configuração base do sistema
 RUN mkdir -vp /var/roothome /data /var/home && \
     dnf5 -y upgrade --refresh && \
     dnf5 -y install kernel-modules-extra --refresh && \
     printf 'omit_dracutmodules+=" nfs "\nomit_drivers+=" nfs nfsv3 nfsv4 nfs_acl nfs_common sunrpc rxrpc rpcrdma auth_rpcgss rpcsec_gss_krb5 "\n' \
-        | tee /etc/dracut.conf.d/no-nfs.conf >/dev/null && \
+    | tee /etc/dracut.conf.d/no-nfs.conf >/dev/null && \
     kver="$(rpm -q kernel-core --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')" && \
     dracut -f /usr/lib/modules/${kver}/initramfs.img ${kver} && \
     mv -v zram-generator.conf /etc/systemd/ && \
@@ -30,7 +30,6 @@ RUN mkdir -vp /var/roothome /data /var/home && \
 
 # Habilitar repositórios COPR
 RUN dnf5 install -y dnf5-plugins && \
-    dnf config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_44/home:luisbocanegra.repo && \
     dnf5 copr enable -y ririko66z/dots-hyprland && \
     dnf5 copr enable -y sdegler/hyprland && \
     dnf5 copr enable -y deltacopy/darkly && \
@@ -41,9 +40,6 @@ RUN dnf5 install -y dnf5-plugins && \
 # Áudio
 RUN dnf5 install -y \
     cava \
-    easyeffects \
-    pipewire \
-    pipewire-pulse \
     pavucontrol \
     wireplumber \
     libdbusmenu-gtk3-devel \
@@ -68,6 +64,7 @@ RUN dnf5 install -y \
     wget2 \
     ripgrep \
     jq \
+    xdg-utils \
     rsync \
     yq && \
     dnf5 clean all && \
@@ -86,14 +83,12 @@ RUN dnf5 install -y \
     breeze-icon-theme \
     breeze-icon-theme-fedora \
     kf6-breeze-icons \
-    sddm \
     sddm-breeze \
     breeze-plus-icon-theme \
     darkly \
     eza \
     fish \
     fontconfig \
-    kde-material-you-colors \
     kitty \
     florian-karsten-space-grotesk-fonts \
     starship \
@@ -110,9 +105,8 @@ RUN dnf5 install -y \
 # Hyprland
 RUN dnf5 install -y --setopt=install_weak_deps=False \
     hyprland \
-    hypridle \
-    hyprland-guiutils \
-    hyprland-qt-support \
+    "hyprland-guiutils" \
+    "hyprland-qt-support" \
     hyprsunset \
     wl-clipboard && \
     dnf5 clean all && \
@@ -121,13 +115,11 @@ RUN dnf5 install -y --setopt=install_weak_deps=False \
 # KDE / sistema
 RUN dnf5 install -y \
     bluedevil \
-    bluez \
     gnome-keyring \
     NetworkManager \
     plasma-nm \
+    polkit-kde \
     dolphin \
-    plasma-browser-integration \
-    plasma-systemmonitor \
     plasma-systemsettings && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
@@ -138,16 +130,20 @@ RUN dnf5 install -y microtex && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Portais XDG
+COPY xdg-desktop-portal.service portals.conf ./
+
 RUN dnf5 install -y \
-    xdg-dbus-proxy \
     xdg-desktop-portal \
     xdg-desktop-portal-gtk \
-    xdg-desktop-portal-hyprland \
     xdg-desktop-portal-kde \
-    xdg-user-dirs \
-    xdg-utils && \
+    xdg-desktop-portal-hyprland && \
     dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+    rm -rfv /var/cache/* /var/log/* /var/tmp/* && \
+    # Corrige xdg-desktop-portal para Hyprland (sem graphical-session.target)
+    cp xdg-desktop-portal.service /usr/lib/systemd/user/xdg-desktop-portal.service && \
+    # Configura backend correto do portal para skel
+    mkdir -p /etc/skel/.config/xdg-desktop-portal && \
+    cp portals.conf /etc/skel/.config/xdg-desktop-portal/portals.conf
 
 # Dependências Python e build
 RUN dnf5 install -y --setopt=install_weak_deps=False \
@@ -188,14 +184,7 @@ RUN dnf5 install -y \
 
 # Utilitários de entrada e sistema
 RUN dnf5 install -y \
-    polkit \
-    polkit-kde \
-    polkit-qt \
-    polkit-qt5-1 \
-    polkit-qt6-1 \
     upower \
-    thermald \
-    lm_sensors \
     wtype \
     ydotool && \
     dnf5 clean all && \
@@ -203,14 +192,12 @@ RUN dnf5 install -y \
 
 # Utilitários extras
 RUN dnf5 install -y \
-    ffmpeg-free \
     fuzzel \
     glib2 \
     ImageMagick \
     hypridle \
     hyprlock \
     hyprpicker \
-    ntfs-3g \
     songrec \
     translate-shell \
     qalculate \
@@ -221,9 +208,7 @@ RUN dnf5 install -y \
 # Extras opcionais
 RUN dnf5 install -y --setopt=install_weak_deps=False \
     mpvpaper \
-    java-latest-openjdk \
-    gnome-disk-utility \
-    ark \
+    plasma-systemmonitor \
     unzip && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
@@ -236,17 +221,20 @@ RUN grep -v '^#' pacotes_necessarios | grep -v '^$' | \
 
 # Clonar dotfiles do Illogical Impulse para /etc/skel/
 RUN git clone --filter=blob:none --recurse-submodules \
-        https://github.com/end-4/dots-hyprland /tmp/dots-hyprland && \
+    https://github.com/end-4/dots-hyprland /tmp/dots-hyprland && \
     rsync -av /tmp/dots-hyprland/dots/ /etc/skel/ && \
     rm -rf /tmp/dots-hyprland && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
+# Corrige execs.lua — inicia xdg-desktop-portal no boot do Hyprland
+# Necessário porque o Hyprland não ativa graphical-session.target automaticamente
+RUN sed -i \
+    '/dbus-update-activation-environment --systemd/a\    hl.exec_cmd("sleep 2 && systemctl --user start xdg-desktop-portal-hyprland xdg-desktop-portal")' \
+    /etc/skel/.config/hypr/hyprland/execs.lua
+
 # Habilitar/mascarar serviços
 RUN systemctl enable NetworkManager && \
     systemctl enable bluetooth && \
-    systemctl enable sddm && \
-    systemctl enable thermald && \
-    systemctl enable geoclue && \
     systemctl mask systemd-remount-fs.service && \
     rm -rfv /var/roothome/.*
 
@@ -261,9 +249,9 @@ ARG CHUNKAH_CONFIG_STR
 RUN --mount=from=final,src=/,target=/chunkah,ro \
     --mount=type=bind,target=/run/src,rw \
     chunkah build --max-layers 128 \
-        --label ostree.commit- \
-        --label ostree.final-diffid- \
-        > /run/src/out.ociarchive
+    --label ostree.commit- \
+    --label ostree.final-diffid- \
+    > /run/src/out.ociarchive
 
 FROM oci-archive:out.ociarchive
 
