@@ -185,6 +185,7 @@ RUN dnf5 install -y \
 # Utilitários de entrada e sistema
 RUN dnf5 install -y \
     upower \
+    thermald \
     wtype \
     ydotool && \
     dnf5 clean all && \
@@ -235,6 +236,7 @@ RUN sed -i \
 # Habilitar/mascarar serviços
 RUN systemctl enable NetworkManager && \
     systemctl enable bluetooth && \
+    systemctl enable thermald && \
     systemctl mask systemd-remount-fs.service && \
     rm -rfv /var/roothome/.*
 
