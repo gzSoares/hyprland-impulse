@@ -209,6 +209,7 @@ RUN dnf5 install -y \
 # Extras opcionais
 RUN dnf5 install -y --setopt=install_weak_deps=False \
     mpvpaper \
+    ntfs-3g \
     plasma-systemmonitor \
     unzip && \
     dnf5 clean all && \
