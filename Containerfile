@@ -4,7 +4,7 @@ LABEL ostree.bootable="true"
 LABEL containers.bootc="1"
 
 # Copia arquivos de configuração e scripts
-COPY locale.conf post-install.sh pacotes_desktop pacotes_necessarios \
+COPY locale.conf post-install.sh pacotes_necessarios \
     post-install.service vconsole.conf zram-generator.conf ./
 
 # Configuração base do sistema
