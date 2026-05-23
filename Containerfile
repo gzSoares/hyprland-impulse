@@ -247,14 +247,12 @@ RUN systemctl enable NetworkManager && \
     rm -rfv /var/roothome/.*
 
 # Instalação dos pacotes definidos nos arquivos de lista
-RUN grep -v '^#' pacotes_necessarios | tr '\n' ' ' | xargs dnf5 install -y && \
-    grep -v '^#' pacotes_desktop | tr '\n' ' ' | xargs dnf5 install -y && \
-    systemctl mask systemd-remount-fs.service && \
-    systemctl enable spice-vdagentd.service && \
+RUN grep -v '^#' /tmp/setup/pacotes_necessarios | grep -v '^@' | grep -v '^$' | \
+    tr '\n' ' ' | xargs dnf5 install -y && \
+    grep -v '^#' /tmp/setup/pacotes_desktop | grep -v '^@' | grep -v '^$' | \
+    tr '\n' ' ' | xargs dnf5 install -y && \
     dnf5 clean all && \
-    rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/* \
-    /var/usrlocal/share/applications/mimeinfo.cache \
-    /var/roothome/.*
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Verificação final
 RUN bootc container lint
