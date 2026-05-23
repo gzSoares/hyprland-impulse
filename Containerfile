@@ -114,6 +114,7 @@ RUN dnf5 install -y --setopt=install_weak_deps=False \
 
 # KDE / sistema
 RUN dnf5 install -y \
+    ark \
     bluedevil \
     gnome-keyring \
     NetworkManager \
