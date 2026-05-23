@@ -115,6 +115,7 @@ RUN dnf5 install -y --setopt=install_weak_deps=False \
 # KDE / sistema
 RUN dnf5 install -y \
     bluedevil \
+    bluez \
     gnome-keyring \
     NetworkManager \
     plasma-nm \
