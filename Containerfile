@@ -37,6 +37,13 @@ RUN dnf5 install -y dnf5-plugins && \
     dnf5 copr enable -y atim/starship && \
     dnf5 clean all
 
+# KDE Material You Colors (OpenSUSE Build Service repo)
+RUN dnf5 config-manager addrepo \
+    --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_44/home:luisbocanegra.repo && \
+    dnf5 install -y kde-material-you-colors && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
 # Áudio
 RUN dnf5 install -y \
     cava \
