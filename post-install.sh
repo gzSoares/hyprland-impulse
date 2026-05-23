@@ -16,6 +16,7 @@ flatpak install -y flathub \
     com.github.tchx84.Flatseal \
     org.telegram.desktop \
     com.google.Chrome \
+    org.mozilla.firefox \
     com.dec05eba.gpu_screen_recorder \
     com.discordapp.Discord \
     com.spotify.Client \
