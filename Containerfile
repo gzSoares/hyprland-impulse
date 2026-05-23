@@ -201,6 +201,7 @@ RUN dnf5 install -y \
 
 # Utilitários extras
 RUN dnf5 install -y \
+    buildah \
     fuzzel \
     glib2 \
     ImageMagick \
