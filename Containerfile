@@ -105,8 +105,8 @@ RUN dnf5 install -y \
 # Hyprland
 RUN dnf5 install -y --setopt=install_weak_deps=False \
     hyprland \
-    "hyprland-guiutils" \
-    "hyprland-qt-support" \
+    hyprland-guiutils \
+    hyprland-qt-support \
     hyprsunset \
     wl-clipboard && \
     dnf5 clean all && \
