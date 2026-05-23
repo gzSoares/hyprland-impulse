@@ -247,10 +247,10 @@ RUN systemctl enable NetworkManager && \
     rm -rfv /var/roothome/.*
 
 # Instalação dos pacotes definidos nos arquivos de lista
-RUN grep -v '^#' /tmp/setup/pacotes_necessarios | grep -v '^@' | grep -v '^$' | \
-    tr '\n' ' ' | xargs dnf5 install -y && \
-    grep -v '^#' /tmp/setup/pacotes_desktop | grep -v '^@' | grep -v '^$' | \
-    tr '\n' ' ' | xargs dnf5 install -y && \
+RUN grep -v '^#' /tmp/setup/pacotes_necessarios | grep '^@' | sed 's/^@//' | \
+    xargs -r dnf5 group install -y && \
+    grep -v '^#' /tmp/setup/pacotes_necessarios | grep -v '^@' | grep -v '^$' | \
+    xargs -r dnf5 install -y && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
