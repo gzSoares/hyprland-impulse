@@ -137,6 +137,9 @@ RUN dnf5 install -y microtex && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
+# Portais XDG
+COPY xdg-desktop-portal.service portals.conf ./
+
 RUN dnf5 install -y \
     xdg-desktop-portal \
     xdg-desktop-portal-gtk \
@@ -149,9 +152,6 @@ RUN dnf5 install -y \
     # Configura backend correto do portal para skel
     mkdir -p /etc/skel/.config/xdg-desktop-portal && \
     cp portals.conf /etc/skel/.config/xdg-desktop-portal/portals.conf
-
-# Portais XDG
-COPY xdg-desktop-portal.service portals.conf ./
 
 # Dependências Python e build
 RUN dnf5 install -y --setopt=install_weak_deps=False \
@@ -254,12 +254,13 @@ RUN grep -v '^#' pacotes_necessarios | tr '\n' ' ' | xargs dnf5 install -y && \
     /var/usrlocal/share/applications/mimeinfo.cache \
     /var/roothome/.*
 
-# Verificação da imagem
+# Verificação final
 RUN bootc container lint
 
-# Estágio final de otimização com Chunkah
+# Estágio de otimização com Chunkah
 FROM quay.io/coreos/chunkah AS chunkah
 ARG CHUNKAH_CONFIG_STR
+
 RUN --mount=from=final,src=/,target=/chunkah,ro \
     --mount=type=bind,target=/run/src,rw \
     chunkah build --max-layers 128 \
