@@ -137,9 +137,6 @@ RUN dnf5 install -y microtex && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Portais XDG
-COPY xdg-desktop-portal.service portals.conf ./
-
 RUN dnf5 install -y \
     xdg-desktop-portal \
     xdg-desktop-portal-gtk \
@@ -152,6 +149,9 @@ RUN dnf5 install -y \
     # Configura backend correto do portal para skel
     mkdir -p /etc/skel/.config/xdg-desktop-portal && \
     cp portals.conf /etc/skel/.config/xdg-desktop-portal/portals.conf
+
+# Portais XDG
+COPY xdg-desktop-portal.service portals.conf ./
 
 # Dependências Python e build
 RUN dnf5 install -y --setopt=install_weak_deps=False \
@@ -224,12 +224,6 @@ RUN dnf5 install -y --setopt=install_weak_deps=False \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Instalar pacotes de sistema (pacotes_necessarios)
-RUN grep -v '^#' pacotes_necessarios | grep -v '^$' | \
-    xargs dnf5 install -y && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
 # Clonar dotfiles do Illogical Impulse para /etc/skel/
 RUN git clone --filter=blob:none --recurse-submodules \
     https://github.com/end-4/dots-hyprland /tmp/dots-hyprland && \
@@ -250,14 +244,22 @@ RUN systemctl enable NetworkManager && \
     systemctl mask systemd-remount-fs.service && \
     rm -rfv /var/roothome/.*
 
-# Verificação final
+# Instalação dos pacotes definidos nos arquivos de lista
+RUN grep -v '^#' pacotes_necessarios | tr '\n' ' ' | xargs dnf5 install -y && \
+    grep -v '^#' pacotes_desktop | tr '\n' ' ' | xargs dnf5 install -y && \
+    systemctl mask systemd-remount-fs.service && \
+    systemctl enable spice-vdagentd.service && \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/lib/* /var/log/* /var/tmp/* \
+    /var/usrlocal/share/applications/mimeinfo.cache \
+    /var/roothome/.*
+
+# Verificação da imagem
 RUN bootc container lint
 
-# Estágio de otimização com Chunkah
+# Estágio final de otimização com Chunkah
 FROM quay.io/coreos/chunkah AS chunkah
-
 ARG CHUNKAH_CONFIG_STR
-
 RUN --mount=from=final,src=/,target=/chunkah,ro \
     --mount=type=bind,target=/run/src,rw \
     chunkah build --max-layers 128 \
@@ -266,6 +268,5 @@ RUN --mount=from=final,src=/,target=/chunkah,ro \
     > /run/src/out.ociarchive
 
 FROM oci-archive:out.ociarchive
-
 LABEL ostree.bootable="true"
 LABEL containers.bootc="1"
