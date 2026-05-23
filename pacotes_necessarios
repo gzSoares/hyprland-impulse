@@ -1,6 +1,7 @@
 # Essêncial (é bom manter esses pacotes e não alterar)
 @networkmanager-submodules
 @multimedia
+ark
 auditctl
 compsize
 fpaste
