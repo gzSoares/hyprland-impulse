@@ -68,6 +68,7 @@ RUN dnf5 install -y \
     cliphist \
     cmake \
     curl \
+    git \
     wget2 \
     ripgrep \
     jq \
