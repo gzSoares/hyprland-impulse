@@ -2,7 +2,7 @@
 @networkmanager-submodules
 @multimedia
 ark
-auditctl
+audit
 compsize
 easyeffects
 fpaste
@@ -34,7 +34,7 @@ toolbox
 
 # Qt6 (dependências para Quickshell e apps KDE)
 kdialog
-kf6-kirigami2
+kf6-kirigami
 qt6ct
 qt6-qtbase
 qt6-qtdeclarative
