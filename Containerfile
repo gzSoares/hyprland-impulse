@@ -71,6 +71,7 @@ RUN dnf5 install -y \
     cmake \
     curl \
     git \
+    ntsync-autoload \
     wget2 \
     ripgrep \
     jq \
