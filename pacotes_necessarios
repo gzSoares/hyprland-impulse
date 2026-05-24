@@ -31,7 +31,6 @@ dconf-editor
 fastfetch
 htop
 micro
-ps_mem
 
 # Qt6 (dependências para Quickshell e apps KDE)
 kdialog
