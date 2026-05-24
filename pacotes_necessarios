@@ -5,6 +5,7 @@ audit
 bluedevil
 bluez
 coreutils
+java-25-openjdk
 ntsync-autoload
 plasma-nm
 power-profiles-daemon
@@ -21,6 +22,9 @@ easyeffects
 ffmpeg-free
 ffmpegthumbs
 libdbusmenu-gtk3-devel
+mpv
+mpv-mpris
+mpvpaper
 pavucontrol
 playerctl
 songrec
@@ -37,6 +41,7 @@ toolbox
 # KDE / DESKTOP / WAYLAND / Qt6
 dolphin
 gnome-keyring
+gwenview
 hypridle
 hyprlock
 hyprpicker
@@ -67,9 +72,11 @@ flatpak
 fpaste
 git
 jq
+ntfs-3g
 ripgrep
 rsync
 tree
+unzip
 wget2
 xdg-utils
 yq
@@ -90,6 +97,7 @@ wlogout
 # PRODUTIVIDADE E MONITORAMENTO
 btop
 htop
+plasma-systemmonitor
 ps_mem
 qalculate
 translate-shell
