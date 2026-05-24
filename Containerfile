@@ -137,10 +137,10 @@ RUN dnf5 install -y \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Instalar pacotes definidos no arquivo de lista
-RUN grep -v '^#' pacotes_necessarios | grep '^@' | sed 's/^@//' | \
+# Instalação dos pacotes definidos nos arquivos de lista
+RUN grep -v '^#' /tmp/setup/pacotes_necessarios | grep '^@' | sed 's/^@//' | \
     xargs -r dnf5 group install -y && \
-    grep -v '^#' pacotes_necessarios | grep -v '^@' | grep -v '^$' | \
+    grep -v '^#' /tmp/setup/pacotes_necessarios | grep -v '^@' | grep -v '^$' | \
     xargs -r dnf5 install -y && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
