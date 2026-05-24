@@ -180,6 +180,7 @@ RUN dnf5 install -y dnf5-plugins && \
 
 # Captura de tela
 RUN dnf5 install -y \
+    ffmpeg-free
     hyprshot \
     slurp \
     swappy \
