@@ -55,7 +55,6 @@ RUN dnf5 install -y --setopt=install_weak_deps=False \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Temas, fontes e ambiente visual
 # (darkly e eza exigem COPRs deltacopy/darkly e alternateved/eza)
 RUN dnf5 install -y \
     breeze-cursor-theme \
@@ -82,7 +81,6 @@ RUN dnf5 install -y \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Hyprland (--setopt=install_weak_deps=False)
 # (hyprland vem do COPR sdegler/hyprland)
 RUN dnf5 install -y --setopt=install_weak_deps=False \
     hyprland \
@@ -109,13 +107,11 @@ RUN dnf5 install -y --setopt=install_weak_deps=False \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Quickshell e matugen
 # (dependem dos COPRs errornointernet/quickshell e heus-sueh/packages)
 RUN dnf5 install -y quickshell matugen && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Portais XDG
 # (xdg-desktop-portal-hyprland vem do COPR sdegler/hyprland)
 # (xdg-desktop-portal.service corrigido para Hyprland sem graphical-session.target)
 RUN dnf5 install -y \
@@ -129,7 +125,6 @@ RUN dnf5 install -y \
     mkdir -p /etc/skel/.config/xdg-desktop-portal && \
     cp portals.conf /etc/skel/.config/xdg-desktop-portal/portals.conf
 
-# Captura de tela
 # (hyprshot vem do COPR ririko66z/dots-hyprland)
 RUN dnf5 install -y \
     hyprshot \
@@ -143,7 +138,6 @@ RUN dnf5 install -y \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Instalar pacotes definidos no arquivo de lista
-# (grupos @... e pacotes simples tratados separadamente)
 RUN grep -v '^#' pacotes_necessarios | grep '^@' | sed 's/^@//' | \
     xargs -r dnf5 group install -y && \
     grep -v '^#' pacotes_necessarios | grep -v '^@' | grep -v '^$' | \
