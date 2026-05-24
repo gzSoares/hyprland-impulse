@@ -11,8 +11,6 @@ plasma-nm
 power-profiles-daemon
 sysfsutils
 thermald
-tuned
-tuned-ppd
 upower
 zram-generator
 
