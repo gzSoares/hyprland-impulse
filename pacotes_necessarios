@@ -108,3 +108,10 @@ cmatrix
 dconf-editor
 fastfetch
 micro
+
+# Habilitar/mascarar serviços
+RUN systemctl enable NetworkManager && \
+    systemctl enable bluetooth && \
+    systemctl enable thermald && \
+    systemctl mask systemd-remount-fs.service && \
+    rm -rfv /var/roothome/.*
