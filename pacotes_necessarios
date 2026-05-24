@@ -1,117 +1,46 @@
-# SISTEMA BASE E REDE
+# Essêncial (é bom manter esses pacotes e não alterar)
 @networkmanager-submodules
-NetworkManager
-audit
-bluedevil
-bluez
-coreutils
-java-25-openjdk
-ntsync-autoload
-plasma-nm
-power-profiles-daemon
-sysfsutils
-thermald
-upower
-zram-generator
-
-# ÁUDIO E MULTIMÍDIA
 @multimedia
+ark
+audit
+compsize
 easyeffects
-ffmpeg-free
+fpaste
 ffmpegthumbs
-libdbusmenu-gtk3-devel
-mpv
-mpv-mpris
-mpvpaper
-pavucontrol
-playerctl
-songrec
-wireplumber
-
-# VIRTUALIZAÇÃO E CONTAINERS
-@virtualization
-buildah
-distrobox
+flatpak
+git
+ibus-gtk4
+langpacks-fonts-en
+langpacks-en
 podman
 podman-compose
-toolbox
-
-# KDE / DESKTOP / WAYLAND / Qt6
-dolphin
-gnome-keyring
-gwenview
-hypridle
-hyprlock
-hyprpicker
-ibus-gtk4
-kdialog
-kf6-kirigami
-plasma-systemsettings
-polkit-kde
 ptyxis
-qt6ct
-qt6-qt5compat
-qt6-qtbase
-qt6-qtdeclarative
-qt6-qtimageformats
-qt6-qtmultimedia
-qt6-qtsvg
-qt6-qtwayland
 spice-vdagent
-wtype
-ydotool
-
-# ARQUIVOS, CLI E SCRIPTS
-ark
-cmake
-compsize
-curl
-flatpak
-fpaste
-git
-jq
-ntfs-3g
-ripgrep
-rsync
+sysfsutils
 tree
-unzip
-wget2
-xdg-utils
-yq
-
-# INTERFACE, TEMAS E APARÊNCIA
-adw-gtk3-theme
-bibata-cursor-theme
-cliphist
-copyq
-fira-code-fonts
-fuzzel
-ImageMagick
-langpacks-en
-langpacks-fonts-en
-microtex
-wlogout
-
-# PRODUTIVIDADE E MONITORAMENTO
-btop
-htop
-plasma-systemmonitor
-ps_mem
-qalculate
-translate-shell
 usbutils
 
-# CONFIGURAÇÃO E ESTÉTICA
+# Pacotes não essênciais (pode ser alterado a gosto)
+@virtualization
 bash-color-prompt
-cava
+btop
 cmatrix
 dconf-editor
+distrobox
 fastfetch
+htop
 micro
+ps_mem
+toolbox
 
-# Habilitar/mascarar serviços
-RUN systemctl enable NetworkManager && \
-    systemctl enable bluetooth && \
-    systemctl enable thermald && \
-    systemctl mask systemd-remount-fs.service && \
-    rm -rfv /var/roothome/.*
+# Qt6 (dependências para Quickshell e apps KDE)
+kdialog
+kf6-kirigami
+qt6ct
+qt6-qtbase
+qt6-qtdeclarative
+qt6-qt5compat
+qt6-qtsvg
+qt6-qtimageformats
+qt6-qtmultimedia
+qt6-qtwayland
