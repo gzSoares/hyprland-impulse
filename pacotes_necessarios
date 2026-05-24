@@ -35,7 +35,7 @@ cliphist
 cmake
 coreutils
 curl
-ffmpg-free
+ffmpeg-free
 jq
 ripgrep
 rsync
