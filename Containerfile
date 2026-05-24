@@ -217,7 +217,6 @@ RUN dnf5 install -y \
 
 # Extras opcionais
 RUN dnf5 install -y --setopt=install_weak_deps=False \
-    ffmpeg-free \
     mpvpaper \
     ntfs-3g \
     java-25-openjdk \
