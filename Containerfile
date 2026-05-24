@@ -145,11 +145,12 @@ RUN grep -v '^#' /tmp/setup/pacotes_necessarios | grep '^@' | sed 's/^@//' | \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Clonar dotfiles do Illogical Impulse para /etc/skel/
-RUN git clone --filter=blob:none --recurse-submodules \
-    https://github.com/end-4/dots-hyprland /tmp/dots-hyprland && \
+RUN dnf5 install -y git rsync && \
+    git clone --filter=blob:none --recurse-submodules \
+        https://github.com/end-4/dots-hyprland /tmp/dots-hyprland && \
     rsync -av /tmp/dots-hyprland/dots/ /etc/skel/ && \
     rm -rf /tmp/dots-hyprland && \
+    dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Corrige execs.lua — inicia xdg-desktop-portal no boot do Hyprland
