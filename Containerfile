@@ -159,13 +159,6 @@ RUN sed -i \
     '/dbus-update-activation-environment --systemd/a\    hl.exec_cmd("sleep 2 && systemctl --user start xdg-desktop-portal-hyprland xdg-desktop-portal")' \
     /etc/skel/.config/hypr/hyprland/execs.lua
 
-# Habilitar/mascarar serviços
-RUN systemctl enable NetworkManager && \
-    systemctl enable bluetooth && \
-    systemctl enable thermald && \
-    systemctl mask systemd-remount-fs.service && \
-    rm -rfv /var/roothome/.*
-
 # Verificação final
 RUN bootc container lint
 
