@@ -142,16 +142,6 @@ RUN dnf5 install -y \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Extras opcionais (--setopt=install_weak_deps=False)
-RUN dnf5 install -y --setopt=install_weak_deps=False \
-    mpvpaper \
-    ntfs-3g \
-    java-25-openjdk \
-    plasma-systemmonitor \
-    unzip && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
 # Instalar pacotes definidos no arquivo de lista
 # (grupos @... e pacotes simples tratados separadamente)
 RUN grep -v '^#' pacotes_necessarios | grep '^@' | sed 's/^@//' | \
