@@ -4,8 +4,10 @@
 ark
 audit
 compsize
+distrobox
 easyeffects
 fpaste
+ffmpeg-free
 ffmpegthumbs
 flatpak
 git
@@ -17,6 +19,7 @@ podman-compose
 ptyxis
 spice-vdagent
 sysfsutils
+toolbox
 tree
 usbutils
 
@@ -26,12 +29,10 @@ bash-color-prompt
 btop
 cmatrix
 dconf-editor
-distrobox
 fastfetch
 htop
 micro
 ps_mem
-toolbox
 
 # Qt6 (dependências para Quickshell e apps KDE)
 kdialog
