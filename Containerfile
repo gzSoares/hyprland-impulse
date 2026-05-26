@@ -85,7 +85,7 @@ RUN dnf5 install -y bibata-cursor-theme && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Temas, fontes e ambiente visual
-RUN dnf5 install -y \
+RUN dnf5 install -y --setopt=install_weak_deps=False \
     adw-gtk3-theme \
     breeze-cursor-theme \
     grub2-breeze-theme \
