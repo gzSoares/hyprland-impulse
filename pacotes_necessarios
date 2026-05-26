@@ -8,7 +8,6 @@ flatpak
 ibus-gtk4
 langpacks-fonts-en
 langpacks-en
-power-profiles-daemon
 ptyxis
 spice-vdagent
 sysfsutils
