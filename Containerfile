@@ -47,7 +47,6 @@ RUN dnf5 config-manager addrepo \
 # Áudio
 RUN dnf5 install -y \
     cava \
-    easyeffects \
     pavucontrol \
     wireplumber \
     libdbusmenu-gtk3-devel \
@@ -85,7 +84,7 @@ RUN dnf5 install -y bibata-cursor-theme && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Temas, fontes e ambiente visual
-RUN dnf5 install -y --setopt=install_weak_deps=False \
+RUN dnf5 install -y \
     adw-gtk3-theme \
     breeze-cursor-theme \
     grub2-breeze-theme \
@@ -219,8 +218,9 @@ RUN dnf5 install -y \
 
 # Extras opcionais
 RUN dnf5 install -y --setopt=install_weak_deps=False \
-    ffmpeg-free \
     mpvpaper \
+    ffmpeg-free \
+    easyeffects \
     ntfs-3g \
     java-25-openjdk \
     plasma-systemmonitor \
