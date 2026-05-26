@@ -1,7 +1,5 @@
 # Essêncial (é bom manter esses pacotes e não alterar)
 @networkmanager-submodules
-@multimedia
-@virtualization
 ark
 compsize
 fpaste
@@ -17,19 +15,23 @@ sysfsutils
 tree
 usbutils
 
+# Pacotes essênciais para virtualização e containers
+@virtualization
+podman
+podman-compose
+distrobox
+toolbox
+
 # Pacotes não essênciais (pode ser alterado a gosto)
+@multimedia
 bash-color-prompt
 btop
 cmatrix
-distrobox
 dconf-editor
 fastfetch
 htop
 micro
-podman
-podman-compose
 ps_mem
-toolbox
 
 # Qt6 (dependências para Quickshell e apps KDE)
 kdialog
