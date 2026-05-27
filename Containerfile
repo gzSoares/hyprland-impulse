@@ -195,6 +195,7 @@ RUN dnf5 install -y \
 RUN dnf5 install -y \
     upower \
     thermald \
+    lm_sensors \
     wtype \
     ydotool && \
     dnf5 clean all && \
