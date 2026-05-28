@@ -157,6 +157,6 @@ jobs:
         with:
           name: hyprland-impulse-iso
           # Usamos o wildcard ** para encontrar a ISO independente da subpasta (anaconda/ ou iso/)
-          path: ./output/**/hyprland-impulse.iso
+          path: ./output/**/install.iso
           retention-days: 5
           if-no-files-found: error
