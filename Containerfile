@@ -247,6 +247,7 @@ RUN systemctl enable NetworkManager && \
     systemctl enable bluetooth && \
     systemctl enable thermald && \
     systemctl mask systemd-remount-fs.service && \
+    systemctl disable bootc-fetch-apply-updates.timer && \
     rm -rfv /var/roothome/.*
 
 # Instalação dos pacotes definidos nos arquivos de lista
