@@ -125,6 +125,7 @@ RUN dnf5 install -y \
     bluedevil \
     bluez \
     gnome-keyring \
+    gnome-keyring-pam \
     NetworkManager \
     plasma-nm \
     polkit-kde \
