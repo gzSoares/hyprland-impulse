@@ -25,6 +25,7 @@ toolbox
 @multimedia
 bash-color-prompt
 btop
+btrfs-assistant
 cmatrix
 dconf-editor
 fastfetch
