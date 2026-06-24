@@ -42,9 +42,8 @@ RUN dnf5 -y install 'dnf5-command(copr)' && \
         jetbrains-mono-nf-fonts \
         microtex \
         python-materialyoucolor \
-        quickshell-git \
         readex-pro-fonts \
-        songrec \
+        songrec && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
@@ -58,42 +57,42 @@ RUN dnf5 -y install 'dnf5-command(copr)' && \
         hypridle \
         hyprland \
         hyprland-guiutils \
-        hyprland-plugins \
+        hyprland-plugins && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 RUN dnf5 -y install 'dnf5-command(copr)' && \
     dnf5 copr enable -y deltacopy/darkly && \
     dnf5 install -y \
-        darkly \
+        darkly && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
     
 RUN dnf5 -y install 'dnf5-command(copr)' && \
     dnf5 copr enable -y alternateved/eza && \
     dnf5 install -y \
-        eza \
+        eza && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
     
 RUN dnf5 -y install 'dnf5-command(copr)' && \
     dnf5 copr enable -y atim/starship && \
     dnf5 install -y \
-        starship \
+        starship && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
     
 RUN dnf5 -y install 'dnf5-command(copr)' && \
     dnf5 copr enable -y errornointernet/quickshell && \
     dnf5 install -y \
-        quickshell \
+        quickshell && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
     
 RUN dnf5 -y install 'dnf5-command(copr)' && \
     dnf5 copr enable -y heus-sueh/packages && \
     dnf5 install -y \
-        matugen \
+        matugen && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
     
@@ -116,7 +115,7 @@ RUN dnf5 install -y \
     plasma-nm \
     plasma-systemsettings \
     polkit-kde \
-    sddm-breeze \
+    sddm-breeze && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
@@ -134,7 +133,7 @@ RUN dnf5 install -y \
     unzip \
     upower \
     wtype \
-    ydotool \
+    ydotool && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
     
