@@ -28,15 +28,75 @@ RUN mkdir -vp /var/roothome /data /var/home && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Habilitar repositórios COPR
-RUN dnf5 install -y dnf5-plugins && \
+RUN dnf5 -y install 'dnf5-command(copr)' && \
     dnf5 copr enable -y ririko66z/dots-hyprland && \
-    dnf5 copr enable -y sdegler/hyprland && \
-    dnf5 copr enable -y deltacopy/darkly && \
-    dnf5 copr enable -y alternateved/eza && \
-    dnf5 copr enable -y atim/starship && \
-    dnf5 clean all
+    dnf5 install -y \
+        bibata-cursor-theme \
+        breeze-plus-icon-theme \
+        florian-karsten-space-grotesk-fonts \
+        google-material-symbols-vf-rounded-fonts \
+        google-roboto-flex-fonts \
+        google-rubik-vf-fonts \
+        google-sans-flex-vf-fonts \
+        hyprland-qt-support \
+        jetbrains-mono-nf-fonts \
+        microtex \
+        python-materialyoucolor \
+        quickshell-git \
+        readex-pro-fonts \
+        songrec \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
+RUN dnf5 -y install 'dnf5-command(copr)' && \
+    dnf5 copr enable -y sdegler/hyprland && \
+    dnf5 install -y \
+        cliphist \
+        hyprcursor \
+        hyprdim \
+        hyprgraphics \
+        hypridle \
+        hyprland \
+        hyprland-guiutils \
+        hyprland-plugins \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+
+RUN dnf5 -y install 'dnf5-command(copr)' && \
+    dnf5 copr enable -y deltacopy/darkly && \
+    dnf5 install -y \
+        darkly \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+    
+RUN dnf5 -y install 'dnf5-command(copr)' && \
+    dnf5 copr enable -y alternateved/eza && \
+    dnf5 install -y \
+        eza \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+    
+RUN dnf5 -y install 'dnf5-command(copr)' && \
+    dnf5 copr enable -y atim/starship && \
+    dnf5 install -y \
+        starship \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+    
+RUN dnf5 -y install 'dnf5-command(copr)' && \
+    dnf5 copr enable -y errornointernet/quickshell && \
+    dnf5 install -y \
+        quickshell \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+    
+RUN dnf5 -y install 'dnf5-command(copr)' && \
+    dnf5 copr enable -y heus-sueh/packages && \
+    dnf5 install -y \
+        matugen \
+    dnf5 clean all && \
+    rm -rfv /var/cache/* /var/log/* /var/tmp/*
+    
 # KDE Material You Colors (OpenSUSE Build Service repo)
 RUN dnf5 config-manager addrepo \
     --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_44/home:luisbocanegra.repo && \
@@ -44,101 +104,40 @@ RUN dnf5 config-manager addrepo \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Áudio
-RUN dnf5 install -y \
-    cava \
-    pavucontrol \
-    wireplumber \
-    libdbusmenu-gtk3-devel \
-    playerctl && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Backlight
-RUN dnf5 install -y --setopt=install_weak_deps=False \
-    geoclue2 \
-    brightnessctl \
-    ddcutil && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Utilitários básicos
-RUN dnf5 install -y \
-    coreutils \
-    cliphist \
-    cmake \
-    curl \
-    git \
-    wget2 \
-    ripgrep \
-    jq \
-    xdg-utils \
-    rsync \
-    yq && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Cursor Bibata
-RUN dnf5 install -y bibata-cursor-theme && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Temas, fontes e ambiente visual
-RUN dnf5 install -y \
-    adw-gtk3-theme \
-    breeze-cursor-theme \
-    grub2-breeze-theme \
-    breeze-icon-theme \
-    breeze-icon-theme-fedora \
-    kf6-breeze-icons \
-    sddm-breeze \
-    breeze-plus-icon-theme \
-    darkly \
-    eza \
-    fish \
-    fontconfig \
-    kitty \
-    florian-karsten-space-grotesk-fonts \
-    starship \
-    jetbrains-mono-nerd-fonts \
-    google-material-symbols-vf-rounded-fonts \
-    material-icons-fonts \
-    readex-pro-fonts-all \
-    google-rubik-vf-fonts \
-    twitter-twemoji-fonts \
-    google-sans-flex-vf-fonts && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Hyprland
-RUN dnf5 install -y --setopt=install_weak_deps=False \
-    hyprland \
-    hyprland-guiutils \
-    hyprland-qt-support \
-    hyprsunset \
-    wl-clipboard && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
 # KDE / sistema
 RUN dnf5 install -y \
+    ark \
     bluedevil \
     bluez \
+    dolphin \
     gnome-keyring \
     gnome-keyring-pam \
     NetworkManager \
     plasma-nm \
+    plasma-systemsettings \
     polkit-kde \
-    dolphin \
-    plasma-systemsettings && \
+    sddm-breeze \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# MicroTeX (renderizador LaTeX do II)
-RUN dnf5 install -y microtex && \
+# Utilitários de entrada e sistema
+RUN dnf5 install -y \
+    adw-gtk3-theme \
+    easyeffects \
+    ffmpeg-free \
+    java-25-openjdk \
+    lm_sensors \
+    mpvpaper \
+    ntfs-3g \
+    plasma-systemmonitor \
+    thermald \
+    unzip \
+    upower \
+    wtype \
+    ydotool \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
+    
 # Portais XDG
 COPY xdg-desktop-portal.service portals.conf ./
 
@@ -154,81 +153,6 @@ RUN dnf5 install -y \
     # Configura backend correto do portal para skel
     mkdir -p /etc/skel/.config/xdg-desktop-portal && \
     cp portals.conf /etc/skel/.config/xdg-desktop-portal/portals.conf
-
-# Dependências Python e build
-RUN dnf5 install -y --setopt=install_weak_deps=False \
-    clang \
-    uv \
-    gtk4-devel \
-    libadwaita-devel \
-    libsoup3-devel \
-    libportal-gtk4 \
-    gobject-introspection-devel \
-    python3 \
-    python3.12 \
-    python3-devel \
-    python3.12-devel && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Quickshell e matugen (via repo local do II)
-# O repo local precisa estar disponível — aqui usamos o COPR do errornointernet como substituto
-RUN dnf5 install -y dnf5-plugins && \
-    dnf5 copr enable -y errornointernet/quickshell && \
-    dnf5 copr enable -y heus-sueh/packages && \
-    dnf5 install -y quickshell matugen && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Captura de tela
-RUN dnf5 install -y \
-    hyprshot \
-    slurp \
-    swappy \
-    tesseract \
-    tesseract-langpack-eng \
-    tesseract-langpack-chi_sim \
-    wf-recorder && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Utilitários de entrada e sistema
-RUN dnf5 install -y \
-    upower \
-    thermald \
-    lm_sensors \
-    wtype \
-    ydotool && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Utilitários extras
-RUN dnf5 install -y \
-    buildah \
-    fuzzel \
-    glib2 \
-    ImageMagick \
-    hypridle \
-    hyprlock \
-    hyprpicker \
-    songrec \
-    translate-shell \
-    qalculate \
-    wlogout && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-
-# Extras opcionais
-RUN dnf5 install -y --setopt=install_weak_deps=False \
-    mpvpaper \
-    ffmpeg-free \
-    easyeffects \
-    ntfs-3g \
-    java-25-openjdk \
-    plasma-systemmonitor \
-    unzip && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Clonar dotfiles do Illogical Impulse para /etc/skel/
 RUN git clone --filter=blob:none --recurse-submodules \
