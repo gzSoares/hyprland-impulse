@@ -30,16 +30,14 @@ RUN mkdir -vp /var/roothome /data /var/home && \
 RUN dnf5 -y install 'dnf5-command(copr)' && \
     dnf5 copr enable -y ririko66z/dots-hyprland && \
     dnf5 copr enable -y sdegler/hyprland && \
-    dnf5 copr enable -y deltacopy/darkly && \
     dnf5 copr enable -y alternateved/eza && \
     dnf5 copr enable -y atim/starship && \
-    dnf5 copr enable -y errornointernet/quickshell && \
     dnf5 copr enable -y heus-sueh/packages && \
     dnf5 config-manager addrepo \
         --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_44/home:luisbocanegra.repo
 
-# Pacotes do COPR ririko66z/dots-hyprland — separados para diagnóstico
-# Se algum não existir, o build vai indicar qual
+# Pacotes do COPR ririko66z/dots-hyprland
+# quickshell-git já inclui o quickshell — não instalar de outros repos para evitar conflito de Qt
 RUN dnf5 install -y \
         bibata-cursor-theme \
         breeze-plus-icon-theme \
@@ -70,10 +68,10 @@ RUN dnf5 install -y \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
 # Pacotes de COPRs individuais
-RUN dnf5 install -y darkly && \
-    dnf5 install -y eza && \
+# darkly removido: exige Qt 6.11, incompatível com quickshell-git (compilado contra Qt 6.10)
+# deltacopy/darkly e errornointernet/quickshell removidos por conflito
+RUN dnf5 install -y eza && \
     dnf5 install -y starship && \
-    dnf5 install -y quickshell && \
     dnf5 install -y matugen && \
     dnf5 install -y kde-material-you-colors && \
     dnf5 clean all && \
