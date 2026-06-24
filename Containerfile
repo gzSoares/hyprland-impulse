@@ -83,12 +83,14 @@ RUN dnf5 install -y \
     bluedevil \
     bluez \
     dolphin \
+    git \
     gnome-keyring \
     gnome-keyring-pam \
     NetworkManager \
     plasma-nm \
     plasma-systemsettings \
     polkit-kde \
+    rsync \
     sddm-breeze && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
