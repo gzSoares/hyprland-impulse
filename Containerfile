@@ -98,7 +98,7 @@ RUN dnf5 install -y \
     adw-gtk3-theme \
     easyeffects \
     ffmpeg-free \
-    java-25-openjdk \
+    java-latest-openjdk \
     lm_sensors \
     mpvpaper \
     ntfs-3g \
