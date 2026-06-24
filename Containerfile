@@ -3,11 +3,9 @@ FROM quay.io/fedora/fedora-bootc:44 AS final
 LABEL ostree.bootable="true"
 LABEL containers.bootc="1"
 
-# Copia arquivos de configuração e scripts
 COPY locale.conf post-install.sh pacotes_necessarios \
     post-install.service vconsole.conf zram-generator.conf ./
 
-# Configuração base do sistema
 RUN mkdir -vp /var/roothome /data /var/home && \
     dnf5 -y upgrade --refresh && \
     dnf5 -y install kernel-modules-extra --refresh && \
@@ -40,7 +38,8 @@ RUN dnf5 -y install 'dnf5-command(copr)' && \
     dnf5 config-manager addrepo \
         --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_44/home:luisbocanegra.repo
 
-# COPR ririko66z/dots-hyprland
+# Pacotes do COPR ririko66z/dots-hyprland — separados para diagnóstico
+# Se algum não existir, o build vai indicar qual
 RUN dnf5 install -y \
         bibata-cursor-theme \
         breeze-plus-icon-theme \
@@ -50,15 +49,15 @@ RUN dnf5 install -y \
         google-rubik-vf-fonts \
         google-sans-flex-vf-fonts \
         hyprland-qt-support \
-        jetbrains-mono-nf-fonts \
+        jetbrains-mono-fonts \
         microtex \
         python-materialyoucolor \
-        readex-pro-fonts \
+        quickshell-git \
         songrec && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# COPR sdegler/hyprland
+# Pacotes do COPR sdegler/hyprland
 RUN dnf5 install -y \
         cliphist \
         hyprcursor \
@@ -71,39 +70,12 @@ RUN dnf5 install -y \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# COPR deltacopy/darkly
-RUN dnf5 install -y \
-        darkly && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-    
-# COPR alternateved/eza
-RUN dnf5 install -y \
-        eza && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-    
-# COPR atim/starship
-RUN dnf5 install -y \
-        starship && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-    
-# COPR errornointernet/quickshell
-RUN dnf5 install -y \
-        quickshell && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-    
-# COPR heus-sueh/packages
-RUN dnf5 install -y \
-        matugen && \
-    dnf5 clean all && \
-    rm -rfv /var/cache/* /var/log/* /var/tmp/*
-    
-# KDE Material You Colors (OpenSUSE Build Service repo)
-RUN dnf5 config-manager addrepo \
-    --from-repofile=https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_44/home:luisbocanegra.repo && \
+# Pacotes de COPRs individuais
+RUN dnf5 install -y darkly && \
+    dnf5 install -y eza && \
+    dnf5 install -y starship && \
+    dnf5 install -y quickshell && \
+    dnf5 install -y matugen && \
     dnf5 install -y kde-material-you-colors && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
@@ -124,12 +96,12 @@ RUN dnf5 install -y \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Utilitários de entrada e sistema
+# Utilitários
 RUN dnf5 install -y \
     adw-gtk3-theme \
     easyeffects \
     ffmpeg-free \
-    java-25-openjdk \
+    java-21-openjdk \
     lm_sensors \
     mpvpaper \
     ntfs-3g \
@@ -141,7 +113,7 @@ RUN dnf5 install -y \
     ydotool && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
-    
+
 # Portais XDG
 COPY xdg-desktop-portal.service portals.conf ./
 
@@ -152,26 +124,20 @@ RUN dnf5 install -y \
     xdg-desktop-portal-hyprland && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/* && \
-    # Corrige xdg-desktop-portal para Hyprland (sem graphical-session.target)
     cp xdg-desktop-portal.service /usr/lib/systemd/user/xdg-desktop-portal.service && \
-    # Configura backend correto do portal para skel
     mkdir -p /etc/skel/.config/xdg-desktop-portal && \
     cp portals.conf /etc/skel/.config/xdg-desktop-portal/portals.conf
 
-# Clonar dotfiles do Illogical Impulse para /etc/skel/
 RUN git clone --filter=blob:none --recurse-submodules \
     https://github.com/end-4/dots-hyprland /tmp/dots-hyprland && \
     rsync -av /tmp/dots-hyprland/dots/ /etc/skel/ && \
     rm -rf /tmp/dots-hyprland && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Corrige execs.lua — inicia xdg-desktop-portal no boot do Hyprland
-# Necessário porque o Hyprland não ativa graphical-session.target automaticamente
 RUN sed -i \
     '/dbus-update-activation-environment --systemd/a\    hl.exec_cmd("sleep 2 && systemctl --user start xdg-desktop-portal-hyprland xdg-desktop-portal")' \
     /etc/skel/.config/hypr/hyprland/execs.lua
 
-# Habilitar/mascarar serviços
 RUN systemctl enable NetworkManager && \
     systemctl enable bluetooth && \
     systemctl enable thermald && \
@@ -179,7 +145,6 @@ RUN systemctl enable NetworkManager && \
     systemctl disable bootc-fetch-apply-updates.timer && \
     rm -rfv /var/roothome/.*
 
-# Instalação dos pacotes definidos nos arquivos de lista
 RUN grep -v '^#' /pacotes_necessarios | grep '^@' | sed 's/^@//' | \
     xargs -r dnf5 group install -y && \
     grep -v '^#' /pacotes_necessarios | grep -v '^@' | grep -v '^$' | \
@@ -187,10 +152,8 @@ RUN grep -v '^#' /pacotes_necessarios | grep '^@' | sed 's/^@//' | \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
-# Verificação final
 RUN bootc container lint
 
-# Estágio de otimização com Chunkah
 FROM quay.io/coreos/chunkah AS chunkah
 ARG CHUNKAH_CONFIG_STR
 
