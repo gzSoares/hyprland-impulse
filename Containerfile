@@ -65,8 +65,7 @@ RUN dnf5 install -y \
         hyprgraphics \
         hypridle \
         hyprland \
-        hyprland-guiutils \
-        hyprland-plugins && \
+        hyprland-guiutils && \
     dnf5 clean all && \
     rm -rfv /var/cache/* /var/log/* /var/tmp/*
 
