@@ -104,6 +104,7 @@ RUN dnf5 install -y \
     lm_sensors \
     mpvpaper \
     ntfs-3g \
+    kdeconnectd \
     plasma-systemmonitor \
     thermald \
     unzip \
